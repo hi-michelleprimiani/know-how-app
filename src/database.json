@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Sauerkraut Making Class",
+  "objective": "Learn the art of making delicious and healthy sauerkraut at home. Discover the fermentation process and how to create your own flavorful variations.",
+  "teacher": "Alice Smith",
+  "about_teacher": "Alice is a fermentation enthusiast with years of experience in crafting probiotic-rich foods. She is passionate about sharing her knowledge and empowering others to embrace fermentation.",
+  "included": "Ingredients, tools, and jars for fermenting.",
+  "to_bring": "An apron and a cutting board.",
+  "price": "$15",
+  "location": "home",
+  "date": "09/01/2023"
+}
