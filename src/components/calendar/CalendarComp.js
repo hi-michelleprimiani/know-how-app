@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { getEvents } from "../../services/CalendarService";
 
 const months = [
   "January",
@@ -23,6 +24,14 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 export const CalendarComp = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [events, setEvents] = useState({});
+
+  useEffect(() => {
+    getEvents().then((eventsArray) => {
+      const eventsObj = eventsArray[0];
+      setEvents(eventsObj);
+    });
+  }, []);
 
   const firstDay = new Date(currentYear, currentMonth, 1);
   const lastDay = new Date(currentYear, currentMonth + 1, 0);
@@ -102,8 +111,8 @@ export const CalendarComp = () => {
                 {dayNumber}
                 {currentDate.toDateString() === eventDate.toDateString() && (
                   <div className="event-details">
-                    <h3>{event1.name}</h3>
-                    <p>{event1.teacher}</p>
+                    <h3>{events.className}</h3>
+                    <p>{events.fee}</p>
                     {/* add more event details as needed */}
                   </div>
                 )}
