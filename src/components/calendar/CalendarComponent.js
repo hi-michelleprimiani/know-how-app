@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
-import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { getEvents } from "../../services/CalendarService";
+import { Link } from "react-router-dom";
+import { getEvents, getUsers } from "../../services/CalendarService";
+import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 
 const months = [
   "January",
@@ -21,15 +20,41 @@ const months = [
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export const CalendarComp = () => {
+export const CalendarComponent = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
+  const [users, setUsers] = useState({});
+
+  /* Fetches an array of events, matches each event with corresponding teacher using their 'id', 
+  formats the data to group events by date */
 
   useEffect(() => {
-    getEvents().then((eventsArray) => {
-      const eventsObj = eventsArray[0];
-      setEvents(eventsObj);
+    if (Array.isArray(users)) {
+      // Check if users is an array
+      getEvents().then((eventsArray) => {
+        const eventsByDate = eventsArray.reduce((acc, event) => {
+          const correspondingTeacher = users.find(
+            (user) => user.id === event.teacherId
+          );
+          const teacherName = correspondingTeacher
+            ? correspondingTeacher.name
+            : "Unknown";
+
+          acc[new Date(event.date).toDateString()] = {
+            ...event,
+            teacherName,
+          };
+          return acc;
+        }, {});
+        setEvents(eventsByDate);
+      });
+    }
+  }, [users]);
+
+  useEffect(() => {
+    getUsers().then((userArray) => {
+      setUsers(userArray);
     });
   }, []);
 
@@ -40,21 +65,6 @@ export const CalendarComp = () => {
   const prevLastDay = new Date(currentYear, currentMonth, 0);
   const prevLastDayDate = prevLastDay.getDate();
   const nextDays = 7 - lastDayIndex - 1;
-
-  const event1 = {
-    id: 1,
-    name: "Sauerkraut Making Class",
-    objective:
-      "Learn the art of making delicious and healthy sauerkraut at home. Discover the fermentation process and how to create your own flavorful variations.",
-    teacher: "Alice Smith",
-    about_teacher:
-      "Alice is a fermentation enthusiast with years of experience in crafting probiotic-rich foods. She is passionate about sharing her knowledge and empowering others to embrace fermentation.",
-    included: "Ingredients, tools, and jars for fermenting.",
-    to_bring: "An apron and a cutting board.",
-    price: "$15",
-    location: "home",
-    date: "09/02/2023",
-  };
 
   const handlePrevClick = () => {
     setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1));
@@ -69,13 +79,12 @@ export const CalendarComp = () => {
       <div className="calendar">
         <div className="header">
           <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
+          <button className="post-event-button">Post New Event</button>
           <div className="btns">
-            <div className="btn prev" onClick={handlePrevClick}>
-              <FontAwesomeIcon icon={faCircleLeft} />
-            </div>
-            <div className="btn next" onClick={handleNextClick}>
-              <FontAwesomeIcon icon={faCircleRight} />
-            </div>
+            <CalendarLeftAndRightBtn
+              handleNextClick={handleNextClick}
+              handlePrevClick={handlePrevClick}
+            />
           </div>
         </div>
         <div className="weekdays">
@@ -92,10 +101,14 @@ export const CalendarComp = () => {
               {prevLastDayDate - firstDay.getDay() + index + 1}
             </div>
           ))}
+
           {Array.from({ length: lastDayDate }).map((_, index) => {
             const dayNumber = index + 1;
-            const currentDate = new Date(currentYear, currentMonth, dayNumber);
-            const eventDate = new Date(event1.date);
+            const currentDate = new Date(
+              currentYear,
+              currentMonth,
+              dayNumber
+            ).toDateString();
 
             return (
               <div
@@ -106,15 +119,16 @@ export const CalendarComp = () => {
                     ? " today"
                     : ""
                 }`}
-                key={`current-${index}`}
+                key={dayNumber}
               >
                 {dayNumber}
-                {currentDate.toDateString() === eventDate.toDateString() && (
-                  <div className="event-details">
-                    <h3>{events.className}</h3>
-                    <p>{events.fee}</p>
-                    {/* add more event details as needed */}
-                  </div>
+                {events[currentDate] && (
+                  <Link to={`/events/${events[currentDate].id}`}>
+                    <div className="event-details">
+                      <h3>{events[currentDate].className}</h3>
+                      <p>{events[currentDate].teacherName}</p>
+                    </div>
+                  </Link>
                 )}
               </div>
             );
