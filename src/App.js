@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from "react";
 import "./components/calendar/Calendar.css";
 import "./App.css";
-import { CalendarComp } from "./components/calendar/CalendarComp";
+import { Routes, Route, Outlet } from "react-router-dom";
+import { CalendarComponent } from "./components/calendar/CalendarComponent";
+import { NavBar } from "./components/NavBar/NavBar";
+import { Welcome } from "./components/welcome/Welcome";
 
-function App() {
+export const App = () => {
   return (
-    <div className="container">
-      <div className="header">
-        <div className="title">Know-How!</div>
-      </div>
-      <CalendarComp />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <NavBar />
+            <Outlet />
+          </>
+        }
+      >
+        <Route index element={<Welcome />} />
+        <Route path=":calendar" element={<CalendarComponent />} />
+      </Route>
+    </Routes>
   );
-}
+};
 
 export default App;
