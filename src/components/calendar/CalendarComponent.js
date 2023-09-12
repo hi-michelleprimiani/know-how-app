@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleRight } from "@fortawesome/free-solid-svg-icons";
-import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 import { getEvents, getUsers } from "../../services/CalendarService";
+import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 
 const months = [
   "January",
@@ -80,13 +79,12 @@ export const CalendarComponent = () => {
       <div className="calendar">
         <div className="header">
           <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
+          <button className="post-event-button">Post New Event</button>
           <div className="btns">
-            <div className="btn prev" onClick={handlePrevClick}>
-              <FontAwesomeIcon icon={faCircleLeft} />
-            </div>
-            <div className="btn next" onClick={handleNextClick}>
-              <FontAwesomeIcon icon={faCircleRight} />
-            </div>
+            <CalendarLeftAndRightBtn
+              handleNextClick={handleNextClick}
+              handlePrevClick={handlePrevClick}
+            />
           </div>
         </div>
         <div className="weekdays">
@@ -121,16 +119,16 @@ export const CalendarComponent = () => {
                     ? " today"
                     : ""
                 }`}
-                key={`current-${index}`}
+                key={dayNumber}
               >
                 {dayNumber}
                 {events[currentDate] && (
-                  <div className="event-details">
-                    <h3>{events[currentDate].className}</h3>
-                    <p>{events[currentDate].teacherName}</p>
-
-                    {/* add more event details as needed */}
-                  </div>
+                  <Link to={`/events/${events[currentDate].id}`}>
+                    <div className="event-details">
+                      <h3>{events[currentDate].className}</h3>
+                      <p>{events[currentDate].teacherName}</p>
+                    </div>
+                  </Link>
                 )}
               </div>
             );

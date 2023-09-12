@@ -1,9 +1,11 @@
 import "./components/calendar/Calendar.css";
+import "./components/EventDetails/EventDetails.css";
 import "./App.css";
 import { Routes, Route, Outlet } from "react-router-dom";
-import { CalendarComponent } from "./components/calendar/CalendarComponent";
 import { NavBar } from "./components/NavBar/NavBar";
 import { Welcome } from "./components/welcome/Welcome";
+import { EventDetails } from "./components/EventDetails/EventDetails";
+import { CalendarComponent } from "./components/calendar/CalendarComponent";
 
 export const App = () => {
   return (
@@ -18,7 +20,8 @@ export const App = () => {
         }
       >
         <Route index element={<Welcome />} />
-        <Route path=":calendar" element={<CalendarComponent />} />
+        <Route path="/:calendar" element={<CalendarComponent />} />
+        <Route path="/events/:eventId" element={<EventDetails />} />
       </Route>
     </Routes>
   );

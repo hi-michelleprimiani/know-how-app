@@ -1,0 +1,25 @@
+:root {
+  --primary-color: #f8f6f2;
+  --text-color: #b0daf0;
+  --bg-color: #19191c;
+  --accent-color: rgb(153, 198, 141);
+}
+
+.event-details-container {
+  margin: 2rem auto;
+  width: 60%;
+  text-align: center;
+  padding: 5rem 3rem;
+  border: 1px solid var(--outline);
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+}
+
+.event-details-container > h1 {
+  color: var(--bg-color);
+}
+
+.event-primary-img {
+  width: 30%;
+  height: auto;
+}
