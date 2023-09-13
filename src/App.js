@@ -1,30 +1,26 @@
 import "./components/calendar/Calendar.css";
 import "./components/EventDetails/EventDetails.css";
 import "./App.css";
-import { Routes, Route, Outlet } from "react-router-dom";
-import { NavBar } from "./components/NavBar/NavBar";
-import { Welcome } from "./components/welcome/Welcome";
-import { EventDetails } from "./components/EventDetails/EventDetails";
-import { CalendarComponent } from "./components/calendar/CalendarComponent";
-import { NewEventForm } from "./components/forms/NewEventForm";
+import { Routes, Route } from "react-router-dom";
+import { Login } from "./components/auth/Login";
+import { Register } from "./components/auth/Register";
+import { ApplicationViews } from "./views/ApplicationViews";
+import { Authorized } from "./views/Authorized";
 
 export const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
       <Route
-        path="/"
+        path="*"
         element={
-          <>
-            <NavBar />
-            <Outlet />
-          </>
+          <Authorized>
+            <ApplicationViews />
+          </Authorized>
         }
-      >
-        <Route index element={<Welcome />} />
-        <Route path="/:calendar" element={<CalendarComponent />} />
-        <Route path="/events/:eventId" element={<EventDetails />} />
-        <Route path="/PostNewEvent" element={<NewEventForm />} />
-      </Route>
+      />
     </Routes>
   );
 };
