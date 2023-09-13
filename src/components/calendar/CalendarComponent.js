@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { getEvents, getUsers } from "../../services/CalendarService";
+import { useNavigate } from "react-router-dom";
+import { getEvents, getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
+import { CalendarDaysData } from "./CalendarDaysData";
 
 const months = [
   "January",
@@ -26,9 +27,10 @@ export const CalendarComponent = () => {
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
 
+  const navigate = useNavigate();
+
   /* Fetches an array of events, matches each event with corresponding teacher using their 'id', 
   formats the data to group events by date */
-
   useEffect(() => {
     if (Array.isArray(users)) {
       // Check if users is an array
@@ -52,6 +54,7 @@ export const CalendarComponent = () => {
     }
   }, [users]);
 
+  /* Get Users*/
   useEffect(() => {
     getUsers().then((userArray) => {
       setUsers(userArray);
@@ -79,7 +82,12 @@ export const CalendarComponent = () => {
       <div className="calendar">
         <div className="header">
           <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
-          <button className="post-event-button">Post New Event</button>
+          <button
+            className="post-event-button"
+            onClick={() => navigate("/PostNewEvent")}
+          >
+            Post New Event
+          </button>
           <div className="btns">
             <CalendarLeftAndRightBtn
               handleNextClick={handleNextClick}
@@ -95,49 +103,15 @@ export const CalendarComponent = () => {
           ))}
         </div>
         <div className="days">
-          {/*Rendering previous month at the beginning of the calendar display*/}
-          {Array.from({ length: firstDay.getDay() }).map((_, index) => (
-            <div className="day prev" key={`prev-${index}`}>
-              {prevLastDayDate - firstDay.getDay() + index + 1}
-            </div>
-          ))}
-
-          {Array.from({ length: lastDayDate }).map((_, index) => {
-            const dayNumber = index + 1;
-            const currentDate = new Date(
-              currentYear,
-              currentMonth,
-              dayNumber
-            ).toDateString();
-
-            return (
-              <div
-                className={`day${
-                  dayNumber === new Date().getDate() &&
-                  currentMonth === new Date().getMonth() &&
-                  currentYear === new Date().getFullYear()
-                    ? " today"
-                    : ""
-                }`}
-                key={dayNumber}
-              >
-                {dayNumber}
-                {events[currentDate] && (
-                  <Link to={`/events/${events[currentDate].id}`}>
-                    <div className="event-details">
-                      <h3>{events[currentDate].className}</h3>
-                      <p>{events[currentDate].teacherName}</p>
-                    </div>
-                  </Link>
-                )}
-              </div>
-            );
-          })}
-          {Array.from({ length: nextDays }).map((_, index) => (
-            <div className="day next" key={`next-${index}`}>
-              {index + 1}
-            </div>
-          ))}
+          <CalendarDaysData
+            prevLastDayDate={prevLastDayDate}
+            firstDay={firstDay}
+            lastDayDate={lastDayDate}
+            currentYear={currentYear}
+            currentMonth={currentMonth}
+            events={events}
+            nextDays={nextDays}
+          />
         </div>
       </div>
     </>
