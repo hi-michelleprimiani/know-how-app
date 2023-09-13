@@ -6,6 +6,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 import { Welcome } from "./components/welcome/Welcome";
 import { EventDetails } from "./components/EventDetails/EventDetails";
 import { CalendarComponent } from "./components/calendar/CalendarComponent";
+import { NewEventForm } from "./components/forms/NewEventForm";
 
 export const App = () => {
   return (
@@ -22,6 +23,7 @@ export const App = () => {
         <Route index element={<Welcome />} />
         <Route path="/:calendar" element={<CalendarComponent />} />
         <Route path="/events/:eventId" element={<EventDetails />} />
+        <Route path="/PostNewEvent" element={<NewEventForm />} />
       </Route>
     </Routes>
   );
