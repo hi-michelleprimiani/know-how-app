@@ -5,7 +5,7 @@
   --accent-color: rgb(153, 198, 141);
 }
 
-.profile-container {
+.form-container {
   margin: 2rem auto;
   width: 60%;
   text-align: center;
@@ -15,13 +15,13 @@
   border-radius: 0.5rem;
 }
 
-/* This targets any h1 that is a child of an element with the .welcome-container class */
-.profile-container > h1 {
+.form {
   display: flex;
   flex-direction: column;
-  color: var(--primary);
+  justify-content: center;
+  width: 40%;
 }
 
-.profile-img {
-  width: 30%;
+.post-btn {
+  margin: 20px;
 }

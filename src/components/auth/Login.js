@@ -5,7 +5,7 @@ import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
 
 export const Login = () => {
-  const [email, set] = useState("hpassfield7@netvibes.com");
+  const [email, set] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -15,7 +15,7 @@ export const Login = () => {
       if (foundUsers.length === 1) {
         const user = foundUsers[0];
         localStorage.setItem(
-          "honey_user",
+          "know-how-user",
           JSON.stringify({
             id: user.id,
             isStaff: user.isStaff,

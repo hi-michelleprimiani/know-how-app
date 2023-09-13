@@ -6,12 +6,13 @@ import { EventDetails } from "../components/EventDetails/EventDetails";
 import { NewEventForm } from "../components/forms/NewEventForm";
 import { useState, useEffect } from "react";
 import { TeacherProfile } from "../components/users/TeacherProfile";
+import { EditEventForm } from "../components/forms/EditEventForm";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    const localHoneyUser = localStorage.getItem("honey_user");
+    const localHoneyUser = localStorage.getItem("know-how-user");
     const honeyUserObject = JSON.parse(localHoneyUser);
 
     setCurrentUser(honeyUserObject);
@@ -36,13 +37,22 @@ export const ApplicationViews = () => {
           <Route path="/events">
             <Route path=":eventId" element={<EventDetails />} />
           </Route>
-          <Route path="/PostNewEvent" element={<NewEventForm />} />
 
-          <Route
-            path=":profile"
-            element={<TeacherProfile />}
-            currentUser={currentUser}
-          />
+          {currentUser.isStaff ? (
+            <>
+              <Route
+                path="/PostNewEvent"
+                element={<NewEventForm currentUser={currentUser} />}
+              />
+              <Route
+                path=":profile"
+                element={<TeacherProfile currentUser={currentUser} />}
+              />
+              <Route path="edit-event/:id" element={<EditEventForm />} />
+            </>
+          ) : (
+            ""
+          )}
         </Route>
       </Routes>
     </>

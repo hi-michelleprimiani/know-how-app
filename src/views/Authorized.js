@@ -7,7 +7,7 @@ export const Authorized = ({ children }) => {
   let location = useLocation();
 
   // Check if user is logged in. If they are, render the CHILD components (in this case, the ApplicationViews component)
-  if (localStorage.getItem("honey_user")) {
+  if (localStorage.getItem("know-how-user")) {
     return children;
   }
   // If the user is NOT logged in, redirect them to the login page using the Navigate component from react-router-dom

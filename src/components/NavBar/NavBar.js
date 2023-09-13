@@ -33,13 +33,13 @@ export const NavBar = () => {
           Profile
         </Link>
       </li>
-      {localStorage.getItem("honey_user") ? (
+      {localStorage.getItem("know-how-user") ? (
         <li className="navbar-item navbar-logout">
           <Link
             className="navbar-link"
             to=""
             onClick={() => {
-              localStorage.removeItem("honey_user");
+              localStorage.removeItem("know-how-user");
               navigate("/", { replace: true });
             }}
           >
