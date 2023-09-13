@@ -1,26 +1,12 @@
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./NewEventForm.css";
-import { useNavigate } from "react-router-dom";
 import { getCategory } from "../../services/APIService";
 
-export const NewEventForm = ({ currentUser }) => {
-  const [categories, setCategories] = useState([]);
-  const [formData, setFormData] = useState({
-    className: "",
-    teacherId: currentUser.id,
-    categoryId: 0,
-    location: "",
-    time: "",
-    date: "",
-    fee: "",
-    length: "",
-    objective: "",
-    tagline: "",
-    isIncluded: "",
-    toBring: "",
-    primaryImgUrl: "",
-  });
+export const EditEventForm = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const [eventData, setEventData] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getCategory().then((catArray) => {
@@ -28,107 +14,114 @@ export const NewEventForm = ({ currentUser }) => {
     });
   }, []);
 
-  const handleChange = (event) => {
-    const itemCopy = { ...formData };
-    itemCopy[event.target.name] = event.target.value;
-    setFormData(itemCopy);
-  };
+  useEffect(() => {
+    fetch(`http://localhost:8088/events/${id}`)
+      .then((res) => res.json())
+      .then((data) => setEventData(data));
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (
-      formData.className &&
-      formData.teacherId &&
-      formData.location &&
-      formData.time &&
-      formData.date &&
-      formData.fee &&
-      formData.length &&
-      formData.objective &&
-      formData.tagline &&
-      formData.isIncluded &&
-      formData.toBring &&
-      formData.primaryImgUrl
+      eventData.className &&
+      eventData.teacherId &&
+      eventData.location &&
+      eventData.time &&
+      eventData.date &&
+      eventData.fee &&
+      eventData.length &&
+      eventData.objective &&
+      eventData.tagline &&
+      eventData.isIncluded &&
+      eventData.toBring &&
+      eventData.primaryImgUrl
     ) {
-      fetch("http://localhost:8088/events", {
-        method: "POST",
+      fetch(`http://localhost:8088/events/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(eventData),
       })
         .then(() => {
           return fetch("http://localhost:8088/events");
         })
         .then(() => {
-          navigate("/");
+          navigate("/profile");
         });
     } else {
       alert("Please fill out all items in the form.");
     }
   };
 
+  const handleChange = (event) => {
+    const itemCopy = { ...eventData };
+    itemCopy[event.target.name] = event.target.value;
+    setEventData(itemCopy);
+  };
+
   return (
     <>
       <form className="form-container">
-        Post A New Event
+        Edit Your Event
         <div className="form">
           <input
             type="text"
             name="className"
             placeholder="Event Name"
-            value={formData.className}
+            value={eventData?.className}
             onChange={handleChange}
           />
           <div>Category:</div>
           <select
             name="categoryId"
             onChange={handleChange}
-            value={categories.categoryId}
+            value={eventData?.categoryId}
           >
             <option value={0}>Please select a category</option>
-            {categories.map((catObj) => {
-              return (
-                <option key={catObj.id} value={catObj.id}>
-                  {catObj.name}
-                </option>
-              );
-            })}
+            {categories &&
+              categories.map((catObj) => {
+                // Step 3
+                return (
+                  <option key={catObj.id} value={catObj.id}>
+                    {catObj.name}
+                  </option>
+                );
+              })}
           </select>
           <input
             type="text"
             name="location"
             placeholder="Location"
-            value={formData.location}
+            value={eventData?.location}
             onChange={handleChange}
           />
           <input
             type="text"
             name="time"
             id="time"
-            value={formData.time}
+            value={eventData?.time}
             onChange={handleChange}
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
-            type="date"
+            type="text"
             name="date"
-            value={formData.date}
+            value={eventData?.date}
             onChange={handleChange}
           />
           <input
             type="text"
             name="fee"
             placeholder="Fee"
-            value={formData.fee}
+            value={eventData?.fee}
             onChange={handleChange}
           />
           <input
             type="text"
             name="length"
             placeholder="Length of class"
-            value={formData.length}
+            value={eventData?.length}
             onChange={handleChange}
           />
 
@@ -136,39 +129,39 @@ export const NewEventForm = ({ currentUser }) => {
             type="text"
             name="objective"
             placeholder="Objective"
-            value={formData.objective}
+            value={eventData?.objective}
             onChange={handleChange}
           />
           <input
             type="text"
             name="tagline"
             placeholder="Tagline"
-            value={formData.tagline}
+            value={eventData?.tagline}
             onChange={handleChange}
           />
           <input
             type="text"
             name="isIncluded"
             placeholder="Items Included"
-            value={formData.isIncluded}
+            value={eventData?.isIncluded}
             onChange={handleChange}
           />
           <input
             type="text"
             name="toBring"
             placeholder="What to Bring"
-            value={formData.toBring}
+            value={eventData?.toBring}
             onChange={handleChange}
           />
           <input
             type="text"
             name="primaryImgUrl"
             placeholder="Image URL"
-            value={formData.primaryImgUrl}
+            value={eventData?.primaryImgUrl}
             onChange={handleChange}
           />
           <button className="post-btn" type="submit" onClick={handleSubmit}>
-            Create Event
+            Save Event
           </button>
         </div>
       </form>
