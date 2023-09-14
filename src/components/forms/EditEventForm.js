@@ -5,7 +5,7 @@ import { getCategory } from "../../services/APIService";
 export const EditEventForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [eventData, setEventData] = useState(null);
+  const [eventData, setEventData] = useState({});
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -20,8 +20,8 @@ export const EditEventForm = () => {
       .then((data) => setEventData(data));
   }, [id]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (
       eventData.className &&
       eventData.teacherId &&
@@ -69,7 +69,7 @@ export const EditEventForm = () => {
             type="text"
             name="className"
             placeholder="Event Name"
-            value={eventData?.className}
+            value={eventData.className ? eventData.className : ""}
             onChange={handleChange}
           />
           <div>Category:</div>
@@ -93,35 +93,35 @@ export const EditEventForm = () => {
             type="text"
             name="location"
             placeholder="Location"
-            value={eventData?.location}
+            value={eventData.location ? eventData.location : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="time"
             id="time"
-            value={eventData?.time}
+            value={eventData.time ? eventData.time : ""}
             onChange={handleChange}
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
             type="text"
             name="date"
-            value={eventData?.date}
+            value={eventData.date ? eventData.date : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="fee"
             placeholder="Fee"
-            value={eventData?.fee}
+            value={eventData.fee ? eventData.fee : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="length"
             placeholder="Length of class"
-            value={eventData?.length}
+            value={eventData.length ? eventData.length : ""}
             onChange={handleChange}
           />
 
@@ -129,35 +129,35 @@ export const EditEventForm = () => {
             type="text"
             name="objective"
             placeholder="Objective"
-            value={eventData?.objective}
+            value={eventData.objective ? eventData.objective : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="tagline"
             placeholder="Tagline"
-            value={eventData?.tagline}
+            value={eventData.tagline ? eventData.tagline : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="isIncluded"
             placeholder="Items Included"
-            value={eventData?.isIncluded}
+            value={eventData.isIncluded ? eventData.isIncluded : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="toBring"
             placeholder="What to Bring"
-            value={eventData?.toBring}
+            value={eventData.toBring ? eventData.toBring : ""}
             onChange={handleChange}
           />
           <input
             type="text"
             name="primaryImgUrl"
             placeholder="Image URL"
-            value={eventData?.primaryImgUrl}
+            value={eventData.primaryImgUrl ? eventData.primaryImgUrl : ""}
             onChange={handleChange}
           />
           <button className="post-btn" type="submit" onClick={handleSubmit}>

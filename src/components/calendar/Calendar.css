@@ -55,7 +55,8 @@
 }
 
 .calendar .header .btns .btn:hover {
-  transform: scale(1.25);
+  color: var(--accent-color);
+  transform: scale(0.96);
 }
 
 .calendar .weekdays {

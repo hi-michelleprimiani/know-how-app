@@ -62,7 +62,7 @@ export const NewEventForm = ({ currentUser }) => {
           return fetch("http://localhost:8088/events");
         })
         .then(() => {
-          navigate("/");
+          navigate("/profile");
         });
     } else {
       alert("Please fill out all items in the form.");
@@ -72,7 +72,7 @@ export const NewEventForm = ({ currentUser }) => {
   return (
     <>
       <form className="form-container">
-        Post A New Event
+        <h1>Post A New Event!</h1>
         <div className="form">
           <input
             type="text"
@@ -86,6 +86,7 @@ export const NewEventForm = ({ currentUser }) => {
             name="categoryId"
             onChange={handleChange}
             value={categories.categoryId}
+            className="category-dropdown"
           >
             <option value={0}>Please select a category</option>
             {categories.map((catObj) => {
@@ -112,10 +113,11 @@ export const NewEventForm = ({ currentUser }) => {
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
-            type="date"
+            type="type"
             name="date"
             value={formData.date}
             onChange={handleChange}
+            placeholder="MM-DD-YYYY"
           />
           <input
             type="text"

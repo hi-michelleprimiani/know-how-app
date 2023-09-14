@@ -1,30 +1,4 @@
-:root {
-  --primary-color: #f8f6f2;
-  --text-color: #b0daf0;
-  --bg-color: #19191c;
-  --accent-color: rgb(153, 198, 141);
-}
-
-.event-details-container {
-  margin: 2rem auto;
-  width: 60%;
-  text-align: center;
-  padding: 5rem 3rem;
-  border: 1px solid var(--outline);
-  background-color: var(--primary-color);
-  border-radius: 0.5rem;
-}
-
-.event-details-container > h1 {
-  color: var(--bg-color);
-}
-
-.event-primary-img {
-  width: 30%;
-  height: auto;
-}
-
-.back-button {
+.post-event-button {
   background-color: var(--primary-color);
   border: 1px solid #222222;
   border-radius: 8px;
@@ -39,8 +13,11 @@
   line-height: 20px;
   margin: 0;
   outline: none;
-  padding: 8px 13px;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
   text-decoration: none;
+  touch-action: manipulation;
   transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
     transform 0.1s;
   user-select: none;
@@ -48,7 +25,12 @@
   width: auto;
 }
 
-.back-button:hover {
+.post-event-button:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+.post-event-button:hover {
   background-color: var(--text-color);
   color: var(--primary-color);
   border-color: #000000;

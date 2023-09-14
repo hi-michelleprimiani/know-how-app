@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
+import Logo from "../assets/Logo.png";
 
 export const Login = () => {
   const [email, set] = useState("");
@@ -22,7 +23,7 @@ export const Login = () => {
           })
         );
 
-        navigate("/");
+        navigate("/calendar");
       } else {
         window.alert("Invalid login");
       }
@@ -31,35 +32,37 @@ export const Login = () => {
 
   return (
     <main className="container-login">
+      <img src={Logo} alt="logo" className="logo" />
       <section>
         <form className="form-login" onSubmit={handleLogin}>
-          <h1>Honey Rae Repairs</h1>
-          <h2>Please sign in</h2>
-          <fieldset>
-            <div className="form-group">
-              <input
-                type="email"
-                value={email}
-                onChange={(evt) => set(evt.target.value)}
-                className="form-control"
-                placeholder="Email address"
-                required
-                autoFocus
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <div className="form-group">
-              <button className="login-btn btn-info" type="submit">
-                Sign in
-              </button>
-            </div>
-          </fieldset>
+          <div className="community">Hi!</div>
+
+          <div className="form-group">
+            <input
+              type="email"
+              value={email}
+              onChange={(evt) => set(evt.target.value)}
+              className="form-control"
+              placeholder="Email address"
+              required
+              autoFocus
+            />
+          </div>
+          <div className="form-group">
+            <button className="login-btn btn-info" type="submit">
+              Login
+            </button>
+          </div>
         </form>
       </section>
-      <section>
-        <Link to="/register">Not a member yet?</Link>
-      </section>
+      <button className="register-button">
+        <Link
+          to="/register"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          Join The Community
+        </Link>
+      </button>
     </main>
   );
 };

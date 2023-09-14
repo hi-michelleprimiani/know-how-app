@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./TeacherProfile.css";
 import { useNavigate } from "react-router-dom";
+import { deleteEvent } from "../../services/APIService";
 
 export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
@@ -27,6 +28,19 @@ export const TeacherProfile = ({ currentUser }) => {
     (event) => event.teacherId === currentUser.id
   );
 
+  const handleDelete = (eventId) => {
+    deleteEvent(eventId)
+      .then(() => {
+        const updatedEvents = userEvents.filter(
+          (event) => event.id !== eventId
+        );
+        setUserEvents(updatedEvents);
+      })
+      .catch((error) => {
+        console.error("There was a problem deleting the event:", error);
+      });
+  };
+
   return (
     <>
       <div className="profile-container">
@@ -49,6 +63,12 @@ export const TeacherProfile = ({ currentUser }) => {
                     className="profile-edit-button"
                   >
                     Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(event.id)}
+                    className="profile-delete-button"
+                  >
+                    Delete
                   </button>
                 </div>
               ))

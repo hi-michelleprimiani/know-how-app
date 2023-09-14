@@ -51,7 +51,7 @@ export const EventDetails = () => {
             Location: {eventDetail?.location}
           </div>
           <div className="event-time">Time: {eventDetail?.time}</div>
-          <div className="event-fee">Fee: ${eventDetail?.fee}</div>
+          <div className="event-fee">Fee: {eventDetail?.fee}</div>
           <div className="event-length">Length: {eventDetail?.length}</div>
           <div className="event-teacher">Guided By: {teacher?.name}</div>
         </div>
