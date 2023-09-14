@@ -5,8 +5,9 @@ import { createUser, getUserByEmail } from "../../services/userService";
 
 export const Register = (props) => {
   const [customer, setCustomer] = useState({
+    name: "",
+    about: "",
     email: "",
-    fullName: "",
     isStaff: false,
   });
   let navigate = useNavigate();
@@ -18,7 +19,7 @@ export const Register = (props) => {
           "know-how-user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStaff,
+            isStaff: createdUser.isStaff,
           })
         );
 
@@ -49,56 +50,71 @@ export const Register = (props) => {
   return (
     <main style={{ textAlign: "center" }}>
       <form className="form-login" onSubmit={handleRegister}>
-        <h1>Honey Rae Repairs</h1>
+        <h1>Know-How!</h1>
         <h2>Please Register</h2>
-        <fieldset>
-          <div className="form-group">
+
+        <div className="form-group">
+          <input
+            onChange={updateCustomer}
+            type="text"
+            id="name"
+            className="form-control"
+            placeholder="Enter your name"
+            required
+            autoFocus
+          />
+        </div>
+
+        <div className="form-group">
+          <input
+            onChange={updateCustomer}
+            type="email"
+            id="email"
+            className="form-control"
+            placeholder="Email address"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            onChange={updateCustomer}
+            type="text"
+            id="about"
+            className="form-control"
+            placeholder="Tell us about yourself"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            onChange={updateCustomer}
+            type="text"
+            id="imgUrl"
+            className="form-control"
+            placeholder="www.you.jpg/selfie"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>
             <input
-              onChange={updateCustomer}
-              type="text"
-              id="fullName"
-              className="form-control"
-              placeholder="Enter your name"
-              required
-              autoFocus
+              onChange={(evt) => {
+                const copy = { ...customer };
+                copy.isStaff = evt.target.checked;
+                setCustomer(copy);
+              }}
+              type="checkbox"
+              id="isStaff"
             />
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <input
-              onChange={updateCustomer}
-              type="email"
-              id="email"
-              className="form-control"
-              placeholder="Email address"
-              required
-            />
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <label>
-              <input
-                onChange={(evt) => {
-                  const copy = { ...customer };
-                  copy.isStaff = evt.target.checked;
-                  setCustomer(copy);
-                }}
-                type="checkbox"
-                id="isStaff"
-              />
-              I am an employee{" "}
-            </label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <div className="form-group">
-            <button className="login-btn btn-info" type="submit">
-              Register
-            </button>
-          </div>
-        </fieldset>
+            I am a teacher{" "}
+          </label>
+        </div>
+
+        <div className="form-group">
+          <button className="login-btn btn-info" type="submit">
+            Register
+          </button>
+        </div>
       </form>
     </main>
   );

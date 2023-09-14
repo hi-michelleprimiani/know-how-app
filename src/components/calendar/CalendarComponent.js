@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getEvents, getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 import { CalendarDaysData } from "./CalendarDaysData";
+import { PostNewEventButton } from "./PostNewEventButton";
 
 const months = [
   "January",
@@ -82,12 +83,7 @@ export const CalendarComponent = () => {
       <div className="calendar">
         <div className="header">
           <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
-          <button
-            className="post-event-button"
-            onClick={() => navigate("/PostNewEvent")}
-          >
-            Post New Event
-          </button>
+          <PostNewEventButton />
           <div className="btns">
             <CalendarLeftAndRightBtn
               handleNextClick={handleNextClick}

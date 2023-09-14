@@ -1,79 +1,63 @@
+:root {
+  --primary-color: f8f6f2#;
+  --text-color: #b0daf0;
+  --bg-color: #19191c;
+  --accent-color: #99c68d;
+}
+
 .container-login {
   text-align: center;
 }
 
-.container-login > section > a {
-  text-decoration: underline;
-  color: var(--secondary);
+h1 {
+  margin: 50px;
+}
+
+.community {
+  padding-bottom: 10px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
 }
 
 .form-login {
-  width: 60%;
-  margin: 2rem auto;
-}
-
-.form-login > h1 {
-  font-size: 2.5rem;
+  /* position: relative; */
+  /* z-index: 1; */
+  background: var(--primary-color);
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
   text-align: center;
+  border-radius: 15px;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
 }
 
-.form-login > h2 {
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-.form-login > fieldset > input[type="email"] {
-  width: 25em;
-}
-
+.register-button,
 .login-btn {
-  align-self: flex-end;
-}
-
-.login-btn:focus {
-  box-shadow: none;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-/************* FORM STYLES *************/
-
-form {
-  margin: 3rem 5rem;
-  border: 1px solid var(--outline);
-  border-radius: 10px;
-  padding: 1rem 0rem 0rem 1rem;
-  box-shadow: 1px 2px 5px lightgray;
-  background-color: var(--offWhite);
-}
-
-fieldset {
-  min-width: 0;
-  padding-bottom: 1.5rem;
+  background-color: var(--primary-color);
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: var(--bg-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
   margin: 0;
-  border: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
 }
 
-.form-control {
-  height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border: 1px solid var(--outline);
-  border-radius: 0.25rem;
-}
-
-.form-group {
-  margin-right: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-btn {
-  align-self: flex-end;
-}
-
-.form-btn:focus {
-  box-shadow: none;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
+.logo {
+  width: 15%;
 }
