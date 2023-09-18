@@ -37,9 +37,14 @@ export const EventDetails = () => {
         <button className="back-button" onClick={() => navigate("/calendar")}>
           Back To Calendar
         </button>
+        <button className="profile-button" onClick={() => navigate("/profile")}>
+          Back To Profile
+        </button>
         <div className="primary-info">
-          <h1 className="event-name">{eventDetail?.className}</h1>
-          <div className="event-tagline">{eventDetail?.tagline}</div>
+          <div className="primary-info-2">
+            <h1 className="event-name">{eventDetail?.className}</h1>
+            <div className="event-tagline">{eventDetail?.tagline}</div>
+          </div>
           <img
             src={eventDetail?.primaryImgUrl}
             alt={eventDetail?.className}

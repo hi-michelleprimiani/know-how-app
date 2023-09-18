@@ -1,33 +1,6 @@
-:root {
-  --primary-color: f8f6f2#;
-  --text-color: #b0daf0;
-  --bg-color: #19191c;
-  --accent-color: #99c68d;
-}
-
-.container-login {
-  text-align: center;
-}
-
-.community {
-  padding-bottom: 10px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
-}
-
-.form-login {
-  /* position: relative; */
-  /* z-index: 1; */
-  background: var(--primary-color);
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  border-radius: 15px;
-}
-
-.register-button,
-.login-btn {
+.profile-view-button,
+.profile-edit-button,
+.profile-delete-button {
   background-color: var(--primary-color);
   border: 1px solid #222222;
   border-radius: 8px;
@@ -42,25 +15,36 @@
   line-height: 20px;
   margin: 0;
   outline: none;
-  padding: 8px 15px;
-  position: relative;
-  text-align: center;
+  padding: 3px 6px;
   text-decoration: none;
   transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
     transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
   width: auto;
+  margin: 5px;
 }
 
-.register-button:hover,
-.login-btn:hover {
+.profile-view-button:hover,
+.profile-edit-button:hover,
+.profile-delete-button:hover {
   background-color: var(--text-color);
   color: var(--primary-color);
   border-color: #000000;
   transform: scale(0.96);
 }
 
-.logo {
-  width: 15%;
+.events-title {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  text-decoration: underline;
+}
+
+.profile-events {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  margin: 25px;
 }
