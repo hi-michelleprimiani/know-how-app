@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { getUserByEmail } from "../../services/userService";
-import Logo from "../assets/Logo.png";
 
 export const Login = () => {
   const [email, set] = useState("");
@@ -32,7 +31,7 @@ export const Login = () => {
 
   return (
     <main className="container-login">
-      <img src={Logo} alt="logo" className="logo" />
+      <div className="title">Know How</div>
       <section>
         <form className="form-login" onSubmit={handleLogin}>
           <div className="community">Hi!</div>
@@ -63,6 +62,7 @@ export const Login = () => {
           Join The Community
         </Link>
       </button>
+      {/* <div className="login-guy">H</div> */}
     </main>
   );
 };

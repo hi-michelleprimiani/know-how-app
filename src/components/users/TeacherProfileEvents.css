@@ -35,11 +35,11 @@
 }
 
 .events-title {
-  margin-top: 80px;
-  margin-bottom: 20px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
-  text-decoration: underline;
+  font-family: FA_APXKJQVUTG;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_APXKJQVUTG.ttf);
+  font-size: 50px;
+  clip-path: inset(9px 0 0 0);
+  margin-top: 40px;
 }
 
 .profile-events {

@@ -32,10 +32,16 @@ export const ApplicationViews = () => {
         >
           <Route index element={<Welcome />} />
           <Route path="calendar">
-            <Route path="/calendar" element={<CalendarComponent />} />
+            <Route
+              path="/calendar"
+              element={<CalendarComponent currentUser={currentUser} />}
+            />
           </Route>
           <Route path="/events">
-            <Route path=":eventId" element={<EventDetails />} />
+            <Route
+              path=":eventId"
+              element={<EventDetails currentUser={currentUser} />}
+            />
           </Route>
 
           {currentUser.isStaff ? (

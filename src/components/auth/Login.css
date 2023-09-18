@@ -61,6 +61,17 @@
   transform: scale(0.96);
 }
 
-.logo {
-  width: 15%;
+.title {
+  font-family: FA_JDSURJATTK;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_JDSURJATTK.ttf);
+  font-size: 150px;
+  clip-path: inset(20px 0 0 0);
+  margin: 30px;
 }
+
+/* .login-guy {
+  font-family: FA_LFQEXGLCLC;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_LFQEXGLCLC.ttf);
+  font-size: 150px;
+  color: var(--primary-color);
+} */

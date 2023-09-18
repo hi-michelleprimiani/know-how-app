@@ -32,9 +32,12 @@
 }
 
 .profile-name {
-  font-family: "Noto Serif Display", serif;
-  font-weight: 900;
-  font-style: italic;
+  font-family: child;
+  src: url(/Users/meesha_zima/Library/Fonts/child.otf);
+  font-size: 60px;
+  clip-path: inset(10px 0 0 0);
+  margin: 30px;
+  margin-bottom: 40px;
 }
 
 .profile-text {
@@ -44,8 +47,4 @@
   margin: 30px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-}
-
-.profile-name {
-  margin-bottom: 40px;
 }

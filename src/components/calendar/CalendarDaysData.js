@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./Calendar.css";
 
 export const CalendarDaysData = ({
   prevLastDayDate,
@@ -26,32 +27,47 @@ export const CalendarDaysData = ({
           dayNumber
         ).toDateString();
 
+        const numberOfEvents = events[currentDate]
+          ? events[currentDate].length
+          : 0;
+
         return (
           <div
-            className={`day${
+            className={`day${numberOfEvents > 1 ? " has-multiple-events" : ""}${
               dayNumber === new Date().getDate() &&
               currentMonth === new Date().getMonth() &&
               currentYear === new Date().getFullYear()
                 ? " today"
                 : ""
             }`}
+            style={
+              numberOfEvents > 1
+                ? { backgroundColor: "#b0daf0", color: "#000" }
+                : {}
+            }
             key={dayNumber}
           >
             {dayNumber}
-            {events[currentDate] && (
-              <Link
-                to={`/events/${events[currentDate].id}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <div className="event-details">
-                  <h3>{events[currentDate].className}</h3>
-                  <p>{events[currentDate].teacherName}</p>
-                </div>
-              </Link>
-            )}
+
+            {events[currentDate] &&
+              events[currentDate].map((event, eventIndex) => (
+                <Link
+                  to={`/events/${event.id}`}
+                  key={`event-${eventIndex}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <div className="flex">
+                    <div className="event-details">
+                      <h3>{event.className}</h3>
+                      <p>{event.teacherName}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
           </div>
         );
       })}
+
       {Array.from({ length: nextDays }).map((_, index) => (
         <div className="day next" key={`next-${index}`}>
           {index + 1}
