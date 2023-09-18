@@ -75,13 +75,16 @@ export const EditEventForm = () => {
           <div>Category:</div>
           <select
             name="categoryId"
-            onChange={handleChange}
+            onChange={(e) => {
+              const itemCopy = { ...eventData };
+              itemCopy[e.target.name] = parseInt(e.target.value);
+              setEventData(itemCopy);
+            }}
             value={eventData?.categoryId}
           >
             <option value={0}>Please select a category</option>
             {categories &&
               categories.map((catObj) => {
-                // Step 3
                 return (
                   <option key={catObj.id} value={catObj.id}>
                     {catObj.name}

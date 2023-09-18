@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,700;1,800;1,900&family=Noto+Serif+Display:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root {
   --primary-color: #f8f6f2;
   --text-color: #b0daf0;
@@ -9,19 +11,41 @@
   margin: 2rem auto;
   width: 60%;
   text-align: center;
-  padding: 5rem 3rem;
+  padding: 3rem 3rem;
   border: 1px solid var(--outline);
   background-color: var(--primary-color);
   border-radius: 0.5rem;
 }
 
-/* This targets any h1 that is a child of an element with the .welcome-container class */
-.profile-container > h1 {
-  display: flex;
-  flex-direction: column;
-  color: var(--primary);
+.profile-img {
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  border: 1px solid var(--bg-color);
+  border-radius: 50px;
 }
 
-.profile-img {
-  width: 30%;
+.profile-about {
+  display: flex;
+  flex-direction: row;
+  font-family: "Noto Serif Display", serif;
+}
+
+.profile-name {
+  font-family: "Noto Serif Display", serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+.profile-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+}
+
+.profile-name {
+  margin-bottom: 40px;
 }

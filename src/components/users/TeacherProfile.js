@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./TeacherProfile.css";
 import { useNavigate } from "react-router-dom";
 import { deleteEvent } from "../../services/APIService";
+import { TeacherProfileEvents } from "./TeacherProfileEvents";
 
 export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
@@ -10,6 +11,10 @@ export const TeacherProfile = ({ currentUser }) => {
 
   const handleEdit = (eventId) => {
     navigate(`/edit-event/${eventId}`);
+  };
+
+  const handleView = (eventId) => {
+    navigate(`/events/${eventId}`);
   };
 
   useEffect(() => {
@@ -29,16 +34,10 @@ export const TeacherProfile = ({ currentUser }) => {
   );
 
   const handleDelete = (eventId) => {
-    deleteEvent(eventId)
-      .then(() => {
-        const updatedEvents = userEvents.filter(
-          (event) => event.id !== eventId
-        );
-        setUserEvents(updatedEvents);
-      })
-      .catch((error) => {
-        console.error("There was a problem deleting the event:", error);
-      });
+    deleteEvent(eventId).then(() => {
+      const updatedEvents = userEvents.filter((event) => event.id !== eventId);
+      setUserEvents(updatedEvents);
+    });
   };
 
   return (
@@ -46,37 +45,27 @@ export const TeacherProfile = ({ currentUser }) => {
       <div className="profile-container">
         {matchingUser && (
           <div className="profile-about">
-            <div className="name">{`You are ${matchingUser.name}`}</div>
-            <div className="name">{`${matchingUser.about}`}</div>
+            <div className="profile-text">
+              <h1 className="profile-name">{`You are ${matchingUser.name}`}</h1>
+              <div className="profile-about">{`${matchingUser.about}`}</div>
+            </div>
             <img
               src={matchingUser.imgUrl}
               alt={matchingUser.name}
               className="profile-img"
             />
-            <div className="profile-events"></div>
-            {eventsTaughtByUser && eventsTaughtByUser.length > 0 ? (
-              eventsTaughtByUser.map((event) => (
-                <div key={event.id}>
-                  {event.className}{" "}
-                  <button
-                    onClick={() => handleEdit(event.id)}
-                    className="profile-edit-button"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(event.id)}
-                    className="profile-delete-button"
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))
-            ) : (
-              <div>You are not teaching any events yet.</div>
-            )}
           </div>
         )}
+        <>
+          <div className="teacher-profile-events">
+            <TeacherProfileEvents
+              eventsTaughtByUser={eventsTaughtByUser}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              handleView={handleView}
+            />
+          </div>
+        </>
       </div>
     </>
   );
