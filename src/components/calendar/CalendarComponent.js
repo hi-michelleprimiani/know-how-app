@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getEvents, getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 import { CalendarDaysData } from "./CalendarDaysData";
 import { PostNewEventButton } from "./PostNewEventButton";
+import "./Calendar.css";
 
 const months = [
   "January",
@@ -22,7 +23,7 @@ const months = [
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export const CalendarComponent = () => {
+export const CalendarComponent = ({ currentUser }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
@@ -30,11 +31,8 @@ export const CalendarComponent = () => {
 
   const navigate = useNavigate();
 
-  /* Fetches an array of events, matches each event with corresponding teacher using their 'id', 
-  formats the data to group events by date */
   useEffect(() => {
     if (Array.isArray(users)) {
-      // Check if users is an array
       getEvents().then((eventsArray) => {
         const eventsByDate = eventsArray.reduce((acc, event) => {
           const correspondingTeacher = users.find(
@@ -44,10 +42,21 @@ export const CalendarComponent = () => {
             ? correspondingTeacher.name
             : "Unknown";
 
-          acc[new Date(event.date).toDateString()] = {
+          // Adjust the date for timezone
+          let eventDate = new Date(event.date);
+          eventDate.setMinutes(
+            eventDate.getMinutes() + eventDate.getTimezoneOffset()
+          );
+          const dateStr = eventDate.toDateString();
+
+          if (!acc[dateStr]) {
+            acc[dateStr] = [];
+          }
+
+          acc[dateStr].push({
             ...event,
             teacherName,
-          };
+          });
           return acc;
         }, {});
         setEvents(eventsByDate);
@@ -82,8 +91,14 @@ export const CalendarComponent = () => {
     <>
       <div className="calendar">
         <div className="header">
-          <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
-          <PostNewEventButton />
+          <div className="month">{`${months[currentMonth]}`}</div>
+          {currentUser.isStaff ? (
+            <>
+              <PostNewEventButton />
+            </>
+          ) : (
+            "" //! WHEN USER STUDENT IS IN PLACE, DO A FILTER CATEGORY HERE
+          )}
           <div className="btns">
             <CalendarLeftAndRightBtn
               handleNextClick={handleNextClick}

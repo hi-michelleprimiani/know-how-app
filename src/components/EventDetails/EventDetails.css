@@ -28,8 +28,9 @@
 }
 
 .event-name {
-  font-family: "Noto Serif Display", serif;
-  font-weight: 400;
+  font-family: child;
+  src: url(/Users/meesha_zima/Library/Fonts/child.otf);
+  font-size: 70px;
 }
 
 .event-tagline {

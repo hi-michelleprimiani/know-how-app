@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getEventsById, getUsers } from "../../services/APIService";
 import "./EventDetails.css";
 
-export const EventDetails = () => {
+export const EventDetails = ({ currentUser }) => {
   const [eventDetail, setEventDetail] = useState();
   const [users, setUsers] = useState({});
   const [teacher, setTeacher] = useState(null);
@@ -37,9 +37,16 @@ export const EventDetails = () => {
         <button className="back-button" onClick={() => navigate("/calendar")}>
           Back To Calendar
         </button>
-        <button className="profile-button" onClick={() => navigate("/profile")}>
-          Back To Profile
-        </button>
+        {currentUser?.id === eventDetail?.teacherId ? (
+          <button
+            className="profile-button"
+            onClick={() => navigate("/profile")}
+          >
+            Back To Profile
+          </button>
+        ) : (
+          ""
+        )}
         <div className="primary-info">
           <div className="primary-info-2">
             <h1 className="event-name">{eventDetail?.className}</h1>

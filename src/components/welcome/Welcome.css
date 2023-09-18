@@ -26,3 +26,24 @@
 .welcome-container > div {
   font-style: italic;
 }
+
+.welcome-title {
+  font-family: FA_JDSURJATTK;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_JDSURJATTK.ttf);
+  font-size: 100px;
+  clip-path: inset(20px 0 0 0);
+}
+
+.welcome-tagline {
+  font-family: FA_APXKJQVUTG;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_APXKJQVUTG.ttf);
+  font-size: 50px;
+  clip-path: inset(5px 0 0 0);
+}
+
+.welcome-dancing {
+  font-family: FA_LFQEXGLCLC;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_LFQEXGLCLC.ttf);
+  font-size: 200px;
+  margin-top: 20px;
+}

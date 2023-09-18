@@ -47,7 +47,7 @@ export const EditEventForm = () => {
           return fetch("http://localhost:8088/events");
         })
         .then(() => {
-          navigate("/profile");
+          navigate(`/events/${id}`);
         });
     } else {
       alert("Please fill out all items in the form.");
