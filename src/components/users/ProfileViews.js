@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import "./ProfileViews.css";
 import { useNavigate } from "react-router-dom";
-import { deleteEvent } from "../../services/APIService";
+import { deleteEvent, deleteRegistration } from "../../services/APIService";
 import { TeacherProfileEvents } from "./TeacherProfileEvents";
 import { StudentProfileEvents } from "./StudentProfileEvents";
 
 export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
   const [userEvents, setUserEvents] = useState([]);
+  const [registrations, setRegistrations] = useState([]);
+  const [signedUpEvents, setSignedUpEvents] = useState([]);
   const navigate = useNavigate();
 
   const handleEdit = (eventId) => {
@@ -26,7 +28,24 @@ export const TeacherProfile = ({ currentUser }) => {
     fetch("http://localhost:8088/events")
       .then((res) => res.json())
       .then((data) => setUserEvents(data));
-  }, []);
+
+    if (!currentUser.isStaff) {
+      fetch(`http://localhost:8088/registrations?userId=${currentUser.id}`)
+        .then((res) => res.json())
+        .then((registrations) => {
+          const eventIds = registrations.map((reg) => reg.eventId);
+
+          // Fetch event details for these event IDs
+          Promise.all(
+            eventIds.map((id) =>
+              fetch(`http://localhost:8088/events/${id}`).then((res) =>
+                res.json()
+              )
+            )
+          ).then((events) => setSignedUpEvents(events));
+        });
+    }
+  }, [currentUser]);
 
   const matchingUser = userData?.find((user) => user.id === currentUser.id);
 
@@ -68,7 +87,7 @@ export const TeacherProfile = ({ currentUser }) => {
           </div>
         ) : (
           <div className="student-profile-events">
-            <StudentProfileEvents />
+            <StudentProfileEvents events={signedUpEvents} />
           </div>
         )}
       </div>

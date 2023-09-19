@@ -48,7 +48,7 @@ export const EventDetails = ({ currentUser }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        alert("You've successfully signed up for the event!");
+        navigate("/profile");
       })
       .catch((error) => {
         console.error("There was an error with the registration:", error);
