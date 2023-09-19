@@ -31,6 +31,31 @@ export const EventDetails = ({ currentUser }) => {
     }
   }, [eventDetail, users]);
 
+  const handleSignUp = () => {
+    // Step 1: Capture EventID and UserID
+    const newRegistration = {
+      eventId: eventDetail.id,
+      userId: currentUser.id,
+    };
+
+    // Step 2: API Call
+    fetch("http://localhost:8088/registrations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRegistration),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        alert("You've successfully signed up for the event!");
+      })
+      .catch((error) => {
+        console.error("There was an error with the registration:", error);
+        alert("There was an issue with your registration. Please try again.");
+      });
+  };
+
   return (
     <>
       <div className="event-details-container">
@@ -63,6 +88,7 @@ export const EventDetails = ({ currentUser }) => {
             Location: {eventDetail?.location}
           </div>
           <div className="event-time">Time: {eventDetail?.time}</div>
+          <div className="event-date">Time: {eventDetail?.date}</div>
           <div className="event-fee">Fee: {eventDetail?.fee}</div>
           <div className="event-length">Length: {eventDetail?.length}</div>
           <div className="event-teacher">Guided By: {teacher?.name}</div>
@@ -84,6 +110,11 @@ export const EventDetails = ({ currentUser }) => {
           <div className="event-included">
             What's included: {eventDetail?.isIncluded}
           </div>
+          {!currentUser?.isStaff && (
+            <button className="sign-up-button" onClick={handleSignUp}>
+              Sign Up
+            </button>
+          )}
         </div>
       </div>
     </>

@@ -5,8 +5,10 @@ import { CalendarComponent } from "../components/calendar/CalendarComponent";
 import { EventDetails } from "../components/EventDetails/EventDetails";
 import { NewEventForm } from "../components/forms/NewEventForm";
 import { useState, useEffect } from "react";
-import { TeacherProfile } from "../components/users/TeacherProfile";
+import { TeacherProfile } from "../components/users/ProfileViews";
 import { EditEventForm } from "../components/forms/EditEventForm";
+import { TeacherViews } from "./TeacherViews";
+import { StudentViews } from "./StudentViews";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -20,47 +22,11 @@ export const ApplicationViews = () => {
 
   return (
     <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <NavBar />
-              <Outlet />
-            </>
-          }
-        >
-          <Route index element={<Welcome />} />
-          <Route path="calendar">
-            <Route
-              path="/calendar"
-              element={<CalendarComponent currentUser={currentUser} />}
-            />
-          </Route>
-          <Route path="/events">
-            <Route
-              path=":eventId"
-              element={<EventDetails currentUser={currentUser} />}
-            />
-          </Route>
-
-          {currentUser.isStaff ? (
-            <>
-              <Route
-                path="/PostNewEvent"
-                element={<NewEventForm currentUser={currentUser} />}
-              />
-              <Route
-                path=":profile"
-                element={<TeacherProfile currentUser={currentUser} />}
-              />
-              <Route path="edit-event/:id" element={<EditEventForm />} />
-            </>
-          ) : (
-            ""
-          )}
-        </Route>
-      </Routes>
+      {currentUser.isStaff ? (
+        <TeacherViews currentUser={currentUser} />
+      ) : (
+        <StudentViews currentUser={currentUser} />
+      )}
     </>
   );
 };

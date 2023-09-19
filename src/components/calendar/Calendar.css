@@ -31,18 +31,10 @@
   font-family: "Montserrat", sans-serif;
 }
 .calendar .header .month {
-  /* display: flex;
-  align-items: center; */
-  font-size: 60px;
-  font-weight: 600;
   color: var(--text-color);
-  font-family: child;
-  src: url(/Users/meesha_zima/Library/Fonts/child.otf);
-  font-size: 100px;
-  clip-path: inset(10px 0 0 0);
-  /* font-family: "Noto Serif Display", serif;
-  font-weight: 600;
-  font-style: italic; */
+  font-family: Sniglet;
+  src: url(/Users/meesha_zima/Library/Fonts/Sniglet.ttf);
+  font-size: 80px;
 }
 .calendar .header .btns {
   display: flex;
@@ -103,7 +95,6 @@
 .calendar .days .day:not(.next):not(.prev):hover {
   color: #fff;
   background: var(--bg-color);
-  /* transform: scale(1.05); */
 }
 
 .day.has-multiple-events:hover {

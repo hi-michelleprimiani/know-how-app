@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import "./TeacherProfile.css";
+import "./ProfileViews.css";
 import { useNavigate } from "react-router-dom";
 import { deleteEvent } from "../../services/APIService";
 import { TeacherProfileEvents } from "./TeacherProfileEvents";
+import { StudentProfileEvents } from "./StudentProfileEvents";
 
 export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
@@ -56,7 +57,7 @@ export const TeacherProfile = ({ currentUser }) => {
             />
           </div>
         )}
-        <>
+        {currentUser.isStaff ? (
           <div className="teacher-profile-events">
             <TeacherProfileEvents
               eventsTaughtByUser={eventsTaughtByUser}
@@ -65,7 +66,11 @@ export const TeacherProfile = ({ currentUser }) => {
               handleView={handleView}
             />
           </div>
-        </>
+        ) : (
+          <div className="student-profile-events">
+            <StudentProfileEvents />
+          </div>
+        )}
       </div>
     </>
   );

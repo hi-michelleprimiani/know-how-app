@@ -62,10 +62,9 @@
 }
 
 .title {
-  font-family: FA_JDSURJATTK;
-  src: url(/Users/meesha_zima/Library/Fonts/FA_JDSURJATTK.ttf);
+  font-family: Sniglet;
+  src: url(/Users/meesha_zima/Library/Fonts/Sniglet.ttf);
   font-size: 150px;
-  clip-path: inset(20px 0 0 0);
   margin: 30px;
 }
 

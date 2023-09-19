@@ -24,7 +24,8 @@ const months = [
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const CalendarComponent = ({ currentUser }) => {
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  // const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentMonth, setCurrentMonth] = useState(9);
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
@@ -64,7 +65,6 @@ export const CalendarComponent = ({ currentUser }) => {
     }
   }, [users]);
 
-  /* Get Users*/
   useEffect(() => {
     getUsers().then((userArray) => {
       setUsers(userArray);
@@ -91,7 +91,7 @@ export const CalendarComponent = ({ currentUser }) => {
     <>
       <div className="calendar">
         <div className="header">
-          <div className="month">{`${months[currentMonth]}`}</div>
+          <div className="month">{`${months[currentMonth]} ${currentYear}`}</div>
           {currentUser.isStaff ? (
             <>
               <PostNewEventButton />

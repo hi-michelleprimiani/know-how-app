@@ -60,6 +60,7 @@ export const CalendarDaysData = ({
                     <div className="event-details">
                       <h3>{event.className}</h3>
                       <p>{event.teacherName}</p>
+                      <p>{event.time}</p>
                     </div>
                   </div>
                 </Link>
