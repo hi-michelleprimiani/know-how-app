@@ -4,7 +4,7 @@ export const Welcome = () => {
   return (
     <>
       <div className="welcome-container">
-        <h1 className="welcome-title">Know How</h1>
+        <h1 className="welcome-title">Know-How!</h1>
         <div className="welcome-tagline">For Outdoor Lovers</div>
         <br></br>
         <div className="welcome-about">
