@@ -52,3 +52,25 @@ h1 {
   -webkit-user-select: none;
   width: auto;
 }
+
+@font-face {
+  font-family: "Gluten-Black";
+  src: url("/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf")
+    format("truetype");
+}
+
+.new-name {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.new-category {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.category-dropdown {
+  margin-bottom: 30px;
+}

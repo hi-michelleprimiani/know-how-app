@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getCategory } from "../../services/APIService";
+import "./EditEventForm.css";
 
 export const EditEventForm = () => {
   const { id } = useParams();
@@ -63,7 +64,7 @@ export const EditEventForm = () => {
   return (
     <>
       <form className="form-container">
-        Edit Your Event
+        <div className="edit-name">Edit Your Event</div>
         <div className="form">
           <input
             type="text"
@@ -72,9 +73,10 @@ export const EditEventForm = () => {
             value={eventData.className ? eventData.className : ""}
             onChange={handleChange}
           />
-          <div>Category:</div>
+          <div className="edit-category">Category:</div>
           <select
             name="categoryId"
+            className="edit-category-select"
             onChange={(e) => {
               const itemCopy = { ...eventData };
               itemCopy[e.target.name] = parseInt(e.target.value);

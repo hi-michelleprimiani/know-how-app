@@ -30,10 +30,16 @@
   border-bottom: 2px solid #ccc;
   font-family: "Montserrat", sans-serif;
 }
+
+@font-face {
+  font-family: "Gluten-Black";
+  src: url("/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf")
+    format("truetype");
+}
+
 .calendar .header .month {
   color: var(--text-color);
-  font-family: Sniglet;
-  src: url(/Users/meesha_zima/Library/Fonts/Sniglet.ttf);
+  font-family: "Gluten-Black", Arial, sans-serif;
   font-size: 80px;
 }
 .calendar .header .btns {
@@ -83,7 +89,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 10px;
+  padding: 6px;
   border-radius: 10px;
   font-size: 28px;
   font-weight: 400;
@@ -112,7 +118,7 @@
 
 .event-details {
   font-size: 20px;
-  margin: 20px;
+  margin: 12px;
 }
 
 .my-link {

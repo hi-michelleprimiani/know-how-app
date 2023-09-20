@@ -20,3 +20,7 @@ import "/Users/meesha_zima/Library/Fonts/Sniglet.ttf";
 import "/Users/meesha_zima/Downloads/MAROLA__.TTF";
 // norm
 import "/Users/meesha_zima/Downloads/SpaceGrotesk-2.0.0/ttf/SpaceGrotesk[wght].ttf";
+// diary
+import "/Users/meesha_zima/Downloads/classical_diary/ClassicalDiary-Regular Demo.ttf";
+
+import "/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf";

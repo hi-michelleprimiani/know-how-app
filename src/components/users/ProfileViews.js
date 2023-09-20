@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./ProfileViews.css";
 import { useNavigate } from "react-router-dom";
-import { deleteEvent, deleteRegistration } from "../../services/APIService";
+import { deleteEvent } from "../../services/APIService";
 import { TeacherProfileEvents } from "./TeacherProfileEvents";
 import { StudentProfileEvents } from "./StudentProfileEvents";
 
@@ -28,6 +28,10 @@ export const TeacherProfile = ({ currentUser }) => {
     fetch("http://localhost:8088/events")
       .then((res) => res.json())
       .then((data) => setUserEvents(data));
+
+    fetch("http://localhost:8088/registrations")
+      .then((res) => res.json())
+      .then((data) => setRegistrations(data));
 
     if (!currentUser.isStaff) {
       fetch(`http://localhost:8088/registrations?userId=${currentUser.id}`)
@@ -67,7 +71,7 @@ export const TeacherProfile = ({ currentUser }) => {
           <div className="profile-about">
             <div className="profile-text">
               <h1 className="profile-name">{`You are ${matchingUser.name}`}</h1>
-              <div className="profile-about">{`${matchingUser.about}`}</div>
+              <div className="profile-aboutme">{`${matchingUser.about}`}</div>
             </div>
             <img
               src={matchingUser.imgUrl}

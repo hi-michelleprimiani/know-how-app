@@ -9,8 +9,7 @@
   margin: 2rem auto;
   width: 60%;
   text-align: center;
-  padding: 5rem 3rem;
-  border: 1px solid var(--outline);
+  padding: 3rem 3rem;
   background-color: var(--primary-color);
   border-radius: 0.5rem;
 }
@@ -19,11 +18,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40%;
 }
 
 .post-btn {
-  margin: 20px;
   background-color: var(--primary-color);
   border: 1px solid #222222;
   border-radius: 8px;
@@ -36,15 +33,13 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  margin: 0;
+  margin: 20px;
   outline: none;
   padding: 8px 13px;
   text-decoration: none;
   transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
     transform 0.1s;
   width: auto;
-  margin-bottom: 30px;
-  margin-left: 10px;
 }
 
 .post-btn:hover {
@@ -52,4 +47,25 @@
   color: var(--primary-color);
   border-color: #000000;
   transform: scale(0.96);
+}
+
+@font-face {
+  font-family: "Gluten-Black";
+  src: url("/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf")
+    format("truetype");
+}
+
+.edit-name {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+.edit-category {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 30px;
+  margin: 10px;
+}
+
+.edit-category-select {
+  margin-bottom: 30px;
 }
