@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./StudentProfileEvents.css";
-
-import { deleteRegistration } from "../../services/APIService";
+import { deleteRegistration } from "../../services/RegistrationServices";
 
 export const StudentProfileEvents = ({ currentUser, registrations }) => {
   const [signedUpEvents, setSignedUpEvents] = useState([]);
@@ -18,6 +17,7 @@ export const StudentProfileEvents = ({ currentUser, registrations }) => {
     }
   };
 
+  //ignore squiggles, will cause infinite loop
   useEffect(() => {
     renderSignedUpEvents();
   }, [currentUser.id]);
@@ -42,7 +42,10 @@ export const StudentProfileEvents = ({ currentUser, registrations }) => {
                 <p>Location: {eventObj.event.location}</p>
                 <p>Fee: {eventObj.event.fee}</p>
               </div>
-              <button onClick={() => handleDeleteRegistration(eventObj.id)}>
+              <button
+                className="student-delete"
+                onClick={() => handleDeleteRegistration(eventObj.id)}
+              >
                 Delete Registration
               </button>
             </div>

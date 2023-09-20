@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getEvents, getUsers } from "../../services/APIService";
+import { getCategory, getEvents, getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 import { CalendarDaysData } from "./CalendarDaysData";
 import { PostNewEventButton } from "./PostNewEventButton";
 import "./Calendar.css";
+import { CategoryFilter } from "./CategoryFilter";
 
 const months = [
   "January",
@@ -24,8 +25,7 @@ const months = [
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export const CalendarComponent = ({ currentUser }) => {
-  // const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const [currentMonth, setCurrentMonth] = useState(9);
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
@@ -97,7 +97,7 @@ export const CalendarComponent = ({ currentUser }) => {
               <PostNewEventButton />
             </>
           ) : (
-            "" //! WHEN USER STUDENT IS IN PLACE, DO A FILTER CATEGORY HERE
+            "" //! ADD CATEGORYFILTER COMPONENT WHEN COMPLETED
           )}
           <div className="btns">
             <CalendarLeftAndRightBtn

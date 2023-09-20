@@ -110,7 +110,7 @@ export const EditEventForm = () => {
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
-            type="text"
+            type="date"
             name="date"
             value={eventData.date ? eventData.date : ""}
             onChange={handleChange}
