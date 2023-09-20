@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Gluten-Black";
+  src: url("/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf")
+    format("truetype");
+}
+
+.primary-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-bottom: 2px solid black;
+}
+
+.event-name {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 70px;
+}
+
+.event-tagline {
+  font-family: "Noto Serif Display", serif;
+  font-weight: 200;
+  font-size: 22px;
+  font-style: italic;
+  margin: 20px;
+}
+
+.event-primary-img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

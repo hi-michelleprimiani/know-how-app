@@ -9,7 +9,6 @@ export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
   const [userEvents, setUserEvents] = useState([]);
   const [registrations, setRegistrations] = useState([]);
-  const [signedUpEvents, setSignedUpEvents] = useState([]);
   const navigate = useNavigate();
 
   const handleEdit = (eventId) => {
@@ -29,26 +28,9 @@ export const TeacherProfile = ({ currentUser }) => {
       .then((res) => res.json())
       .then((data) => setUserEvents(data));
 
-    fetch("http://localhost:8088/registrations")
+    fetch("http://localhost:8088/registrations?_expand=event&_expand=user")
       .then((res) => res.json())
       .then((data) => setRegistrations(data));
-
-    if (!currentUser.isStaff) {
-      fetch(`http://localhost:8088/registrations?userId=${currentUser.id}`)
-        .then((res) => res.json())
-        .then((registrations) => {
-          const eventIds = registrations.map((reg) => reg.eventId);
-
-          // Fetch event details for these event IDs
-          Promise.all(
-            eventIds.map((id) =>
-              fetch(`http://localhost:8088/events/${id}`).then((res) =>
-                res.json()
-              )
-            )
-          ).then((events) => setSignedUpEvents(events));
-        });
-    }
   }, [currentUser]);
 
   const matchingUser = userData?.find((user) => user.id === currentUser.id);
@@ -91,7 +73,12 @@ export const TeacherProfile = ({ currentUser }) => {
           </div>
         ) : (
           <div className="student-profile-events">
-            <StudentProfileEvents events={signedUpEvents} />
+            <StudentProfileEvents
+              userData={userData}
+              userEvents={userEvents}
+              registrations={registrations}
+              currentUser={currentUser}
+            />
           </div>
         )}
       </div>

@@ -1,4 +1,4 @@
-.student-delete-button {
+.student-delete {
   background-color: var(--primary-color);
   border: 1px solid #222222;
   border-radius: 8px;
@@ -23,7 +23,7 @@
   margin: 5px;
 }
 
-.student-delete-button:hover {
+.student-delete:hover {
   background-color: var(--text-color);
   color: var(--primary-color);
   border-color: #000000;
@@ -41,7 +41,7 @@
 .student-signed-up-event {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-  font-size: 25px;
+  font-size: 22px;
   margin: 25px;
 }
 

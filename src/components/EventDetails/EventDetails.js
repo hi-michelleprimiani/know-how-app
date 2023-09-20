@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getEventsById, getUsers } from "../../services/APIService";
 import "./EventDetails.css";
+import { EventDetailsPrimary } from "./EventDetails-Primary";
+import { EventDetailsSecondary } from "./EventDetails-Secondary";
+import { EventDetailsObjective } from "./EventDetails-Objective";
 
 export const EventDetails = ({ currentUser }) => {
   const [eventDetail, setEventDetail] = useState();
@@ -71,78 +74,14 @@ export const EventDetails = ({ currentUser }) => {
             ""
           )}
         </div>
-        <div className="primary-info">
-          <div className="primary-info-2">
-            <h1 className="event-name">{eventDetail?.className}</h1>
-            <div className="event-tagline">{eventDetail?.tagline}</div>
-          </div>
-          <img
-            src={eventDetail?.primaryImgUrl}
-            alt={eventDetail?.className}
-            className="event-primary-img"
-          />
-        </div>
-        <div className="secondary-info">
-          <div className="event-location">
-            <div className="label">Location</div>
-            <div className="info">{eventDetail?.location}</div>
-          </div>
-          <div className="event-time">
-            <div className="label">Time</div>
-            <div className="info">{eventDetail?.time}</div>
-          </div>
-          <div className="event-date">
-            <div className="label">Date</div>
-            <div className="info">{eventDetail?.date}</div>
-          </div>
-          <div className="event-fee">
-            <div className="label">Fee</div>
-            <div className="info">{eventDetail?.fee}</div>
-          </div>
-          <div className="event-length">
-            <div className="label">Length</div>
-            <div className="info">{eventDetail?.length}</div>
-          </div>
-          <div className="event-teacher">
-            <div className="label">Guided By</div>
-            <div className="info">{teacher?.name}</div>
-          </div>
-        </div>
-
-        <div className="objective-info">
-          <div className="event-objective">
-            <div className="label">Objective</div>
-            <div className="info">{eventDetail?.objective}</div>
-          </div>
-        </div>
-        <div className="teacher-info">
-          <div className="event-teacher-about">
-            <div className="label">About The Teacher</div>
-            <div className="teacher-name">{teacher?.name}</div>
-            <img
-              src={teacher?.imgUrl}
-              alt={teacher?.name}
-              className="event-teacher-img"
-            />
-            <div className="info">{teacher?.about}</div>
-          </div>
-        </div>
-        <div className="footer-info">
-          <div className="event-bring">
-            <div className="label">What to bring</div>
-            <div className="info">{eventDetail?.toBring}</div>
-          </div>
-          <div className="event-included">
-            <div className="label">What's included</div>
-            <div className="info">{eventDetail?.isIncluded}</div>
-          </div>
-
-          {!currentUser?.isStaff && (
-            <button className="sign-up-button" onClick={handleSignUp}>
-              Sign Up
-            </button>
-          )}
-        </div>
+        <EventDetailsPrimary eventDetail={eventDetail} />
+        <EventDetailsSecondary eventDetail={eventDetail} teacher={teacher} />
+        <EventDetailsObjective eventDetail={eventDetail} teacher={teacher} />
+        {!currentUser?.isStaff && (
+          <button className="sign-up-button" onClick={handleSignUp}>
+            Sign Up!
+          </button>
+        )}
       </div>
     </>
   );

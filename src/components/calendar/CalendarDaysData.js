@@ -9,6 +9,7 @@ export const CalendarDaysData = ({
   currentMonth,
   events,
   nextDays,
+  selectedCategory,
 }) => {
   return (
     <>
