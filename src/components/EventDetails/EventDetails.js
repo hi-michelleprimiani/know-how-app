@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getEventsById, getUsers } from "../../services/APIService";
+import { getEventsById } from "../../services/EventsService";
 import "./EventDetails.css";
 import { EventDetailsPrimary } from "./EventDetails-Primary";
 import { EventDetailsSecondary } from "./EventDetails-Secondary";
 import { EventDetailsObjective } from "./EventDetails-Objective";
+import { getUsers } from "../../services/APIService";
 
 export const EventDetails = ({ currentUser }) => {
   const [eventDetail, setEventDetail] = useState();
@@ -37,6 +38,12 @@ export const EventDetails = ({ currentUser }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const isEventPast = (eventDate) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return new Date(eventDate).setHours(0, 0, 0, 0) < today;
+  };
 
   const handleSignUp = () => {
     const newRegistration = {
@@ -77,7 +84,7 @@ export const EventDetails = ({ currentUser }) => {
         <EventDetailsPrimary eventDetail={eventDetail} />
         <EventDetailsSecondary eventDetail={eventDetail} teacher={teacher} />
         <EventDetailsObjective eventDetail={eventDetail} teacher={teacher} />
-        {!currentUser?.isStaff && (
+        {!currentUser?.isStaff && !isEventPast(eventDetail?.date) && (
           <button className="sign-up-button" onClick={handleSignUp}>
             Sign Up!
           </button>

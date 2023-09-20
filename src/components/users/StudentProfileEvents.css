@@ -33,15 +33,15 @@
 .student-events {
   font-family: FA_APXKJQVUTG;
   src: url(/Users/meesha_zima/Library/Fonts/FA_APXKJQVUTG.ttf);
-  font-size: 50px;
-  clip-path: inset(6px 0 0 0);
+  font-size: 40px;
+  clip-path: inset(5px 0 0 0);
   margin-top: 40px;
 }
 
 .student-signed-up-event {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   margin: 25px;
 }
 
