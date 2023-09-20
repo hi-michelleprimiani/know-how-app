@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { getCategory, getEvents, getUsers } from "../../services/APIService";
+
+import { getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 import { CalendarDaysData } from "./CalendarDaysData";
 import { PostNewEventButton } from "./PostNewEventButton";
 import "./Calendar.css";
-import { CategoryFilter } from "./CategoryFilter";
+import { getEvents } from "../../services/EventsService";
 
 const months = [
   "January",
@@ -29,8 +29,6 @@ export const CalendarComponent = ({ currentUser }) => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (Array.isArray(users)) {

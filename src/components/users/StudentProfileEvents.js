@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./StudentProfileEvents.css";
 import { deleteRegistration } from "../../services/RegistrationServices";
+import { StudentPreviousEvents } from "./StudentPreviousEvents";
 
-export const StudentProfileEvents = ({ currentUser, registrations }) => {
+export const StudentProfileEvents = ({ currentUser }) => {
   const [signedUpEvents, setSignedUpEvents] = useState([]);
 
   const renderSignedUpEvents = () => {
@@ -54,6 +55,7 @@ export const StudentProfileEvents = ({ currentUser, registrations }) => {
       ) : (
         <p>You haven't signed up for any events yet.</p>
       )}
+      <StudentPreviousEvents signedUpEvents={signedUpEvents} />
     </div>
   );
 };
