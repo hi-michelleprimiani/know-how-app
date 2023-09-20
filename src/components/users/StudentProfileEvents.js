@@ -1,18 +1,21 @@
 import React from "react";
-import "./ProfileViews.css"; // Assuming you want to use the same styles as your TeacherProfileEvents
+import "./StudentProfileEvents.css";
 
 export const StudentProfileEvents = ({ events }) => {
   return (
     <div className="student-profile-events-container">
-      <h1>Your Signed-Up Events</h1>
+      <h1 className="student-events">Your Signed Up Events</h1>
       {events.length > 0 ? (
         events.map((event) => (
           <div key={event.id} className="student-signed-up-event">
-            <h2>{event.className}</h2> {/* Adjust field name as needed */}
-            <p>Date: {event.date}</p>
-            <p>Time: {event.time}</p>
-            <p>Location: {event.location}</p>
-            <button student-delete-button>Remove Registration</button>
+            <h2>{event.className}</h2>
+            <div className="student-event-details">
+              <p>Date: {event.date}</p>
+              <p>Time: {event.time}</p>
+              <p>Location: {event.location}</p>
+              <p>Fee: {event.fee}</p>
+            </div>
+            <button>Delete Registration</button>
           </div>
         ))
       ) : (

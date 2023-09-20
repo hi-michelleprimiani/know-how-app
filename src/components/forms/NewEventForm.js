@@ -72,7 +72,7 @@ export const NewEventForm = ({ currentUser }) => {
   return (
     <>
       <form className="form-container">
-        <h1>Post A New Event!</h1>
+        <h1 className="new-name">Post A New Event!</h1>
         <div className="form">
           <input
             type="text"
@@ -81,7 +81,7 @@ export const NewEventForm = ({ currentUser }) => {
             value={formData.className}
             onChange={handleChange}
           />
-          <div>Category:</div>
+          <div className="new-category">Category:</div>
           <select
             name="categoryId"
             onChange={handleChange}

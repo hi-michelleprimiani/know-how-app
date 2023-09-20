@@ -7,6 +7,7 @@
 
 .container-login {
   text-align: center;
+  margin-top: 60px;
 }
 
 .community {
@@ -15,12 +16,25 @@
     "Helvetica Neue", sans-serif;
 }
 
+.register-name {
+  font-family: Sniglet;
+  src: url(/Users/meesha_zima/Library/Fonts/Sniglet.ttf);
+  font-size: 40px;
+}
+
+.register-please {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  margin: 20px;
+  font-size: 20px;
+}
+
 .form-login {
   /* position: relative; */
   /* z-index: 1; */
   background: var(--primary-color);
   max-width: 360px;
-  margin: 0 auto 100px;
+  margin: 60px auto 100px;
   padding: 45px;
   text-align: center;
   border-radius: 15px;
@@ -53,6 +67,13 @@
   width: auto;
 }
 
+.register-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
 .register-button:hover,
 .login-btn:hover {
   background-color: var(--text-color);
@@ -74,3 +95,9 @@
   font-size: 150px;
   color: var(--primary-color);
 } */
+
+.form-teacher {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}

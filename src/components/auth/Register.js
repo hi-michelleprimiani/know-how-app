@@ -41,6 +41,10 @@ export const Register = (props) => {
     });
   };
 
+  const handleBackClick = () => {
+    navigate("/login");
+  };
+
   const updateCustomer = (evt) => {
     const copy = { ...customer };
     copy[evt.target.id] = evt.target.value;
@@ -50,8 +54,8 @@ export const Register = (props) => {
   return (
     <main style={{ textAlign: "center" }}>
       <form className="form-login" onSubmit={handleRegister}>
-        <h1>Know-How!</h1>
-        <h2>Please Register</h2>
+        <h1 className="register-name">Know-How!</h1>
+        <h2 className="register-please">Please Register</h2>
 
         <div className="form-group">
           <input
@@ -96,7 +100,7 @@ export const Register = (props) => {
           />
         </div>
         <div className="form-group">
-          <label>
+          <label className="form-teacher">
             <input
               onChange={(evt) => {
                 const copy = { ...customer };
@@ -106,13 +110,16 @@ export const Register = (props) => {
               type="checkbox"
               id="isStaff"
             />
-            I am a teacher{" "}
+            Are you a teacher?{" "}
           </label>
         </div>
 
         <div className="form-group">
-          <button className="login-btn btn-info" type="submit">
+          <button className="register-button" type="submit">
             Register
+          </button>
+          <button className="register-button" onClick={handleBackClick}>
+            Back
           </button>
         </div>
       </form>

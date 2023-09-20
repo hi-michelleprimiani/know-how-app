@@ -31,14 +31,15 @@ export const EventDetails = ({ currentUser }) => {
     }
   }, [eventDetail, users]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSignUp = () => {
-    // Step 1: Capture EventID and UserID
     const newRegistration = {
       eventId: eventDetail.id,
       userId: currentUser.id,
     };
-
-    // Step 2: API Call
     fetch("http://localhost:8088/registrations", {
       method: "POST",
       headers: {
@@ -49,29 +50,27 @@ export const EventDetails = ({ currentUser }) => {
       .then((response) => response.json())
       .then((data) => {
         navigate("/profile");
-      })
-      .catch((error) => {
-        console.error("There was an error with the registration:", error);
-        alert("There was an issue with your registration. Please try again.");
       });
   };
 
   return (
     <>
       <div className="event-details-container">
-        <button className="back-button" onClick={() => navigate("/calendar")}>
-          Back To Calendar
-        </button>
-        {currentUser?.id === eventDetail?.teacherId ? (
-          <button
-            className="profile-button"
-            onClick={() => navigate("/profile")}
-          >
-            Back To Profile
+        <div className="back-button-container">
+          <button className="back-button" onClick={() => navigate("/calendar")}>
+            Back To Calendar
           </button>
-        ) : (
-          ""
-        )}
+          {currentUser?.id === eventDetail?.teacherId ? (
+            <button
+              className="profile-button"
+              onClick={() => navigate("/profile")}
+            >
+              Back To Profile
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
         <div className="primary-info">
           <div className="primary-info-2">
             <h1 className="event-name">{eventDetail?.className}</h1>
@@ -85,31 +84,59 @@ export const EventDetails = ({ currentUser }) => {
         </div>
         <div className="secondary-info">
           <div className="event-location">
-            Location: {eventDetail?.location}
+            <div className="label">Location</div>
+            <div className="info">{eventDetail?.location}</div>
           </div>
-          <div className="event-time">Time: {eventDetail?.time}</div>
-          <div className="event-date">Time: {eventDetail?.date}</div>
-          <div className="event-fee">Fee: {eventDetail?.fee}</div>
-          <div className="event-length">Length: {eventDetail?.length}</div>
-          <div className="event-teacher">Guided By: {teacher?.name}</div>
+          <div className="event-time">
+            <div className="label">Time</div>
+            <div className="info">{eventDetail?.time}</div>
+          </div>
+          <div className="event-date">
+            <div className="label">Date</div>
+            <div className="info">{eventDetail?.date}</div>
+          </div>
+          <div className="event-fee">
+            <div className="label">Fee</div>
+            <div className="info">{eventDetail?.fee}</div>
+          </div>
+          <div className="event-length">
+            <div className="label">Length</div>
+            <div className="info">{eventDetail?.length}</div>
+          </div>
+          <div className="event-teacher">
+            <div className="label">Guided By</div>
+            <div className="info">{teacher?.name}</div>
+          </div>
         </div>
+
         <div className="objective-info">
           <div className="event-objective">
-            Objective: {eventDetail?.objective}
+            <div className="label">Objective</div>
+            <div className="info">{eventDetail?.objective}</div>
           </div>
         </div>
         <div className="teacher-info">
           <div className="event-teacher-about">
-            About The Teacher: {teacher?.about}
+            <div className="label">About The Teacher</div>
+            <div className="teacher-name">{teacher?.name}</div>
+            <img
+              src={teacher?.imgUrl}
+              alt={teacher?.name}
+              className="event-teacher-img"
+            />
+            <div className="info">{teacher?.about}</div>
           </div>
         </div>
         <div className="footer-info">
           <div className="event-bring">
-            What to bring: {eventDetail?.toBring}
+            <div className="label">What to bring</div>
+            <div className="info">{eventDetail?.toBring}</div>
           </div>
           <div className="event-included">
-            What's included: {eventDetail?.isIncluded}
+            <div className="label">What's included</div>
+            <div className="info">{eventDetail?.isIncluded}</div>
           </div>
+
           {!currentUser?.isStaff && (
             <button className="sign-up-button" onClick={handleSignUp}>
               Sign Up
