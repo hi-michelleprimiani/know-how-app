@@ -18,8 +18,11 @@ export const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
 
   return (
     <>
-      <select onChange={(e) => setSelectedCategory(e.target.value)}>
-        <option value="all">All Categories</option>
+      <select
+        className="category-filter"
+        onChange={(e) => setSelectedCategory(e.target.value)}
+      >
+        <option value="all">Choose A Category!</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>
             {category.name}

@@ -27,8 +27,9 @@ export const TeacherProfileEvents = ({
             <div>{event.className}</div>
             <div className="profile-event-details">
               <div>{event.time}</div>
-              <div>{event.formattedDate}</div>
+              <div>{formattedDate}</div>
               <div>{event.location}</div>
+              <div>{event.fee}</div>
             </div>
             {(shouldDisplayButtons || shouldDisplayViewButtonOnly) && (
               <TeacherProfileButtons

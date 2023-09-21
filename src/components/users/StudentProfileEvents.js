@@ -62,7 +62,7 @@ export const StudentProfileEvents = ({ currentUser }) => {
               </div>
               <button
                 className="profile-view-button"
-                onClick={() => handleView(eventObj.id)}
+                onClick={() => handleView(eventObj.event.id)}
               >
                 View
               </button>
@@ -76,7 +76,7 @@ export const StudentProfileEvents = ({ currentUser }) => {
           );
         })
       ) : (
-        <p>You haven't signed up for any events yet.</p>
+        <p className="signed-up">You haven't signed up for any events yet.</p>
       )}
       <StudentPreviousEvents signedUpEvents={pastEvents} />
     </div>
