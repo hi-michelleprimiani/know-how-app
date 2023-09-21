@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./ProfileViews.css";
-import { useNavigate } from "react-router-dom";
 import { deleteEvent } from "../../services/APIService";
 import { TeacherProfileEvents } from "./TeacherProfileEvents";
 import { StudentProfileEvents } from "./StudentProfileEvents";
@@ -9,15 +8,6 @@ export const TeacherProfile = ({ currentUser }) => {
   const [userData, setUserData] = useState();
   const [userEvents, setUserEvents] = useState([]);
   const [registrations, setRegistrations] = useState([]);
-  const navigate = useNavigate();
-
-  const handleEdit = (eventId) => {
-    navigate(`/edit-event/${eventId}`);
-  };
-
-  const handleView = (eventId) => {
-    navigate(`/events/${eventId}`);
-  };
 
   useEffect(() => {
     fetch("http://localhost:8088/users")
@@ -67,16 +57,12 @@ export const TeacherProfile = ({ currentUser }) => {
             <TeacherProfileEvents
               eventsTaughtByUser={eventsTaughtByUser}
               handleDelete={handleDelete}
-              handleEdit={handleEdit}
-              handleView={handleView}
             />
           </div>
         ) : (
           <div className="student-profile-events">
             <StudentProfileEvents
               userData={userData}
-              userEvents={userEvents}
-              registrations={registrations}
               currentUser={currentUser}
             />
           </div>
