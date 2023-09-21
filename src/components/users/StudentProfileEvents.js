@@ -2,9 +2,18 @@ import { useEffect, useState } from "react";
 import "./StudentProfileEvents.css";
 import { deleteRegistration } from "../../services/RegistrationServices";
 import { StudentPreviousEvents } from "./StudentPreviousEvents";
+import { useNavigate } from "react-router-dom";
 
 export const StudentProfileEvents = ({ currentUser }) => {
   const [signedUpEvents, setSignedUpEvents] = useState([]);
+  const navigate = useNavigate();
+  const handleView = (eventId) => {
+    navigate(`/events/${eventId}`);
+  };
+  //ignore squiggles, will cause infinite loop
+  useEffect(() => {
+    renderSignedUpEvents();
+  }, [currentUser.id]);
 
   const renderSignedUpEvents = () => {
     if (!currentUser.isStaff) {
@@ -18,22 +27,30 @@ export const StudentProfileEvents = ({ currentUser }) => {
     }
   };
 
-  //ignore squiggles, will cause infinite loop
-  useEffect(() => {
-    renderSignedUpEvents();
-  }, [currentUser.id]);
-
   const handleDeleteRegistration = (regId) => {
     deleteRegistration(regId).then(() => {
       renderSignedUpEvents();
     });
   };
 
+  const isEventPast = (eventDate) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return new Date(eventDate).setHours(0, 0, 0, 0) < today;
+  };
+
+  const upcomingEvents = signedUpEvents.filter(
+    (eventObj) => !isEventPast(eventObj.event.date)
+  );
+  const pastEvents = signedUpEvents.filter((eventObj) =>
+    isEventPast(eventObj.event.date)
+  );
+
   return (
     <div className="student-profile-events-container">
       <h1 className="student-events">Your Signed Up Events</h1>
-      {signedUpEvents.length > 0 ? (
-        signedUpEvents.map((eventObj) => {
+      {upcomingEvents.length > 0 ? (
+        upcomingEvents.map((eventObj) => {
           return (
             <div key={eventObj.id} className="student-signed-up-event">
               <h2>{eventObj.event.className}</h2>
@@ -43,6 +60,12 @@ export const StudentProfileEvents = ({ currentUser }) => {
                 <p>Location: {eventObj.event.location}</p>
                 <p>Fee: {eventObj.event.fee}</p>
               </div>
+              <button
+                className="profile-view-button"
+                onClick={() => handleView(eventObj.id)}
+              >
+                View
+              </button>
               <button
                 className="student-delete"
                 onClick={() => handleDeleteRegistration(eventObj.id)}
@@ -55,7 +78,7 @@ export const StudentProfileEvents = ({ currentUser }) => {
       ) : (
         <p>You haven't signed up for any events yet.</p>
       )}
-      <StudentPreviousEvents signedUpEvents={signedUpEvents} />
+      <StudentPreviousEvents signedUpEvents={pastEvents} />
     </div>
   );
 };

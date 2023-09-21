@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getCategory, getEvents } from "../../services/APIService";
+import { getCategory } from "../../services/APIService";
+import { getEvents } from "../../services/EventsService";
 
-export const CategoryFilter = () => {
+export const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
   const [events, setEvents] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     getCategory().then((catArray) => {
@@ -16,10 +16,6 @@ export const CategoryFilter = () => {
     });
   }, []);
 
-  const filteredEvents = selectedCategory
-    ? events.filter((event) => event.categoryId === parseInt(selectedCategory))
-    : events;
-
   return (
     <>
       <select onChange={(e) => setSelectedCategory(e.target.value)}>
@@ -30,11 +26,6 @@ export const CategoryFilter = () => {
           </option>
         ))}
       </select>
-      <ul>
-        {filteredEvents.map((event) => (
-          <li key={event.id}>{event.className}</li>
-        ))}
-      </ul>
     </>
   );
 };

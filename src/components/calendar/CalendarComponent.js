@@ -6,6 +6,7 @@ import { CalendarDaysData } from "./CalendarDaysData";
 import { PostNewEventButton } from "./PostNewEventButton";
 import "./Calendar.css";
 import { getEvents } from "../../services/EventsService";
+import { CategoryFilter } from "./CategoryFilter";
 
 const months = [
   "January",
@@ -29,6 +30,7 @@ export const CalendarComponent = ({ currentUser }) => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     if (Array.isArray(users)) {
@@ -85,6 +87,17 @@ export const CalendarComponent = ({ currentUser }) => {
     setCurrentMonth((prevMonth) => (prevMonth === 11 ? 0 : prevMonth + 1));
   };
 
+  const filteredEvents = selectedCategory
+    ? Object.fromEntries(
+        Object.entries(events).map(([date, eventArray]) => [
+          date,
+          eventArray.filter(
+            (event) => event.categoryId === parseInt(selectedCategory)
+          ),
+        ])
+      )
+    : events; // <- This should handle the "All Categories" case
+
   return (
     <>
       <div className="calendar">
@@ -95,7 +108,10 @@ export const CalendarComponent = ({ currentUser }) => {
               <PostNewEventButton />
             </>
           ) : (
-            "" //! ADD CATEGORYFILTER COMPONENT WHEN COMPLETED
+            <CategoryFilter
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
           )}
           <div className="btns">
             <CalendarLeftAndRightBtn
@@ -118,8 +134,8 @@ export const CalendarComponent = ({ currentUser }) => {
             lastDayDate={lastDayDate}
             currentYear={currentYear}
             currentMonth={currentMonth}
-            events={events}
             nextDays={nextDays}
+            events={filteredEvents}
           />
         </div>
       </div>

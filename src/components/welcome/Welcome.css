@@ -36,13 +36,17 @@
 .welcome-tagline {
   font-family: FA_APXKJQVUTG;
   src: url(/Users/meesha_zima/Library/Fonts/FA_APXKJQVUTG.ttf);
-  font-size: 50px;
-  clip-path: inset(5px 0 0 0);
+  font-size: 35px;
+  clip-path: inset(3px 0 0 0);
+}
+
+.welcome-about {
+  font-size: 24px;
 }
 
 .welcome-dancing {
   font-family: FA_LFQEXGLCLC;
   src: url(/Users/meesha_zima/Library/Fonts/FA_LFQEXGLCLC.ttf);
   font-size: 200px;
-  margin-top: 20px;
+  margin-top: 40px;
 }

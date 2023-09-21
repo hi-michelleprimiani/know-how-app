@@ -104,7 +104,9 @@
 }
 
 .day.has-multiple-events:hover {
-  height: 400px;
+  height: min-content;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .calendar .days .day.next,
