@@ -1,6 +1,11 @@
 import "./EventDetails-Secondary.css";
 
 export const EventDetailsSecondary = ({ eventDetail, teacher }) => {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US"); // 'MM/DD/YYYY'
+  };
+
   return (
     <>
       <div className="secondary-info">
@@ -14,7 +19,7 @@ export const EventDetailsSecondary = ({ eventDetail, teacher }) => {
         </div>
         <div className="event-date">
           <div className="label">Date</div>
-          <div className="info">{eventDetail?.date}</div>
+          {eventDetail?.date ? formatDate(eventDetail.date) : ""}
         </div>
         <div className="event-fee">
           <div className="label">Fee</div>

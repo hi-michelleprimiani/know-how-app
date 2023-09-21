@@ -51,3 +51,10 @@
   font-size: 15px;
   margin: 10px;
 }
+
+.signed-up {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  margin: 20px;
+}

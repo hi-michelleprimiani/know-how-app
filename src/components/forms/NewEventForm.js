@@ -74,13 +74,6 @@ export const NewEventForm = ({ currentUser }) => {
       <form className="form-container">
         <h1 className="new-name">Post A New Event!</h1>
         <div className="form">
-          <input
-            type="text"
-            name="className"
-            placeholder="Event Name"
-            value={formData.className}
-            onChange={handleChange}
-          />
           <div className="new-category">Category:</div>
           <select
             name="categoryId"
@@ -97,6 +90,13 @@ export const NewEventForm = ({ currentUser }) => {
               );
             })}
           </select>
+          <input
+            type="text"
+            name="className"
+            placeholder="Event Name"
+            value={formData.className}
+            onChange={handleChange}
+          />
           <input
             type="text"
             name="location"

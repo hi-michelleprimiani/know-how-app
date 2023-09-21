@@ -8,6 +8,11 @@ export const EditEventForm = () => {
   const navigate = useNavigate();
   const [eventData, setEventData] = useState({});
   const [categories, setCategories] = useState([]);
+  const [isDateFocused, setIsDateFocused] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     getCategory().then((catArray) => {
@@ -64,15 +69,17 @@ export const EditEventForm = () => {
   return (
     <>
       <form className="form-container">
+        <div className="profile-button-container">
+          <button
+            className="profile-button"
+            onClick={() => navigate("/profile")}
+          >
+            Back To Profile
+          </button>
+        </div>
+
         <div className="edit-name">Edit Your Event</div>
         <div className="form">
-          <input
-            type="text"
-            name="className"
-            placeholder="Event Name"
-            value={eventData.className ? eventData.className : ""}
-            onChange={handleChange}
-          />
           <div className="edit-category">Category:</div>
           <select
             name="categoryId"
@@ -96,6 +103,13 @@ export const EditEventForm = () => {
           </select>
           <input
             type="text"
+            name="className"
+            placeholder="Event Name"
+            value={eventData.className ? eventData.className : ""}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
             name="location"
             placeholder="Location"
             value={eventData.location ? eventData.location : ""}
@@ -110,11 +124,21 @@ export const EditEventForm = () => {
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
-            type="date"
+            type={isDateFocused ? "date" : "text"}
             name="date"
+            placeholder={
+              isDateFocused
+                ? ""
+                : eventData.date
+                ? eventData.date
+                : "Select a Date"
+            }
             value={eventData.date ? eventData.date : ""}
             onChange={handleChange}
+            onFocus={() => setIsDateFocused(true)}
+            onBlur={() => setIsDateFocused(false)}
           />
+
           <input
             type="text"
             name="fee"

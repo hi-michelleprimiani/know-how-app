@@ -27,7 +27,9 @@ export const StudentPreviousEvents = ({ signedUpEvents }) => {
           </div>
         ))
       ) : (
-        <p>You haven't attended any previous events yet.</p>
+        <p className="previous-events">
+          You haven't attended any previous events yet.
+        </p>
       )}
     </div>
   );
