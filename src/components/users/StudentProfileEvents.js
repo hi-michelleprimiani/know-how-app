@@ -46,6 +46,17 @@ export const StudentProfileEvents = ({ currentUser }) => {
     isEventPast(eventObj.event.date)
   );
 
+  const handleAddToCalendar = (eventObj) => {
+    const eventTitle = eventObj.event.className;
+    const startTime = eventObj.event.time;
+    const location = eventObj.event.location;
+    const details = eventObj.event.objective;
+
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}&details=${details}&location=${location}`;
+
+    window.open(googleCalendarUrl, "_blank");
+  };
+
   return (
     <div className="student-profile-events-container">
       <h1 className="student-events">Your Signed Up Events</h1>
@@ -71,6 +82,12 @@ export const StudentProfileEvents = ({ currentUser }) => {
                 onClick={() => handleDeleteRegistration(eventObj.id)}
               >
                 Delete Registration
+              </button>
+              <button
+                className="profile-calendar-button"
+                onClick={() => handleAddToCalendar(eventObj)}
+              >
+                Add to Google Calendar
               </button>
             </div>
           );
