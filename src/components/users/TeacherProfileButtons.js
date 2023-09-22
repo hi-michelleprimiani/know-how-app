@@ -59,6 +59,7 @@ export const TeacherProfileButtons = ({
           >
             Delete
           </button>
+          <div></div>
           <button
             className="profile-calendar-button"
             onClick={handleAddToCalendar}

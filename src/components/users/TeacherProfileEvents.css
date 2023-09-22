@@ -45,10 +45,14 @@
 }
 
 .profile-events {
+  margin: 25px;
+}
+
+.profile-classname {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", sans-serif;
-  font-size: 20px;
-  margin: 25px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .profile-event-details {
