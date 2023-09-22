@@ -15,6 +15,10 @@ export const TeacherProfileButtons = ({
     navigate(`/events/${eventId}`);
   };
 
+  const handleViewStudents = (eventId) => {
+    navigate(`/profile/students/${eventId}`);
+  };
+
   const handleAddToCalendar = () => {
     const eventTitle = event.className;
     const startTime = event.time;
@@ -60,6 +64,12 @@ export const TeacherProfileButtons = ({
             onClick={handleAddToCalendar}
           >
             Add to Google Calendar
+          </button>
+          <button
+            className="profile-calendar-button"
+            onClick={() => handleViewStudents(event.id)}
+          >
+            View Student Sign Up
           </button>
         </>
       )}

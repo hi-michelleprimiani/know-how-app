@@ -8,7 +8,7 @@
   --primary-color: #f8f6f2;
   --text-color: #b0daf0;
   --bg-color: #19191c;
-  --accent-color: rgb(153, 198, 141);
+  --accent-color: #99c68d;
 }
 
 .calendar {
@@ -128,8 +128,9 @@
   color: inherit;
 }
 
-.category-filter {
-  width: 15%;
+.category-filter,
+.search-bar {
+  width: 12%;
   text-align: center;
   position: relative;
   padding: 5px 10px;
@@ -144,4 +145,9 @@
 .profile-button-container {
   text-align: left;
   margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-top: 14px;
+  background-color: var(--text-color);
 }

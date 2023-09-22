@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Gluten-Black";
+  src: url("/Users/meesha_zima/Library/Fonts/Gluten-Black.ttf")
+    format("truetype");
+}
+
+.register-container {
+  margin: 2rem auto;
+  width: 60%;
+  text-align: center;
+  padding: 2rem 2rem;
+  border: 1px solid var(--outline);
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+}
+
+.register-title {
+  font-family: "Gluten-Black", Arial, sans-serif;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.register-text {
+  list-style-type: none;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+}
+
+.register-text-2 {
+  list-style-type: none;
+  margin-bottom: 20px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+}

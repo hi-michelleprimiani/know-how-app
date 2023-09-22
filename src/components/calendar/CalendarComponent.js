@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { getUsers } from "../../services/APIService";
 import { CalendarLeftAndRightBtn } from "./CalendarLeftAndRightBtn";
 import { CalendarDaysData } from "./CalendarDaysData";
@@ -31,6 +30,7 @@ export const CalendarComponent = ({ currentUser }) => {
   const [events, setEvents] = useState({});
   const [users, setUsers] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (Array.isArray(users)) {
@@ -96,7 +96,20 @@ export const CalendarComponent = ({ currentUser }) => {
           ),
         ])
       )
-    : events; // <- This should handle the "All Categories" case
+    : events;
+
+  const filterEventsBySearch = (events, searchQuery) => {
+    return Object.fromEntries(
+      Object.entries(events).map(([date, eventArray]) => [
+        date,
+        eventArray.filter((event) =>
+          event.className.toLowerCase().includes(searchQuery.toLowerCase())
+        ),
+      ])
+    );
+  };
+
+  const searchedEvents = filterEventsBySearch(filteredEvents, searchQuery);
 
   return (
     <>
@@ -113,6 +126,13 @@ export const CalendarComponent = ({ currentUser }) => {
               setSelectedCategory={setSelectedCategory}
             />
           )}
+          <input
+            type="text"
+            placeholder="Search Events"
+            className="search-bar"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <div className="btns">
             <CalendarLeftAndRightBtn
               handleNextClick={handleNextClick}
@@ -135,7 +155,7 @@ export const CalendarComponent = ({ currentUser }) => {
             currentYear={currentYear}
             currentMonth={currentMonth}
             nextDays={nextDays}
-            events={filteredEvents}
+            events={searchedEvents}
           />
         </div>
       </div>

@@ -6,6 +6,7 @@ import { EventDetails } from "../components/EventDetails/EventDetails";
 import { NewEventForm } from "../components/forms/NewEventForm";
 import { TeacherProfile } from "../components/users/ProfileViews";
 import { EditEventForm } from "../components/forms/EditEventForm";
+import { StudentRegistration } from "../components/users/StudentRegistration";
 
 export const TeacherViews = ({ currentUser }) => {
   return (
@@ -43,6 +44,14 @@ export const TeacherViews = ({ currentUser }) => {
               element={<TeacherProfile currentUser={currentUser} />}
             />
             <Route path="edit-event/:id" element={<EditEventForm />} />
+            <Route
+              path="profile/:students/:eventId"
+              element={<StudentRegistration currentUser={currentUser} />}
+            />
+            <Route
+              path="profile/:userId"
+              element={<StudentRegistration currentUser={currentUser} />}
+            />
           </>
         </Route>
       </Routes>
