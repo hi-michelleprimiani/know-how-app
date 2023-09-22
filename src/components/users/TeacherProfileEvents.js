@@ -24,7 +24,7 @@ export const TeacherProfileEvents = ({
         const formattedDate = `${month}/${day}/${year}`;
         return (
           <div key={event.id} className="profile-events">
-            <div>{event.className}</div>
+            <div className="profile-classname">{event.className}</div>
             <div className="profile-event-details">
               <div>{event.time}</div>
               <div>{formattedDate}</div>
