@@ -42,7 +42,7 @@ export const TeacherProfile = ({ currentUser }) => {
         {matchingUser && (
           <div className="profile-about">
             <div className="profile-text">
-              <h1 className="profile-name">{`You are ${matchingUser.name}`}</h1>
+              <h1 className="profile-name">{`Hi! You are ${matchingUser.name}`}</h1>
               <div className="profile-aboutme">{`${matchingUser.about}`}</div>
             </div>
             <img

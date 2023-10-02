@@ -7,17 +7,12 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <li className="navbar-item">
-        <Link
-          className="navbar-link"
-          to="/"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           Know-How
         </Link>
       </li>
       <li className="navbar-item">
         <Link
-          className="navbar-link"
           to="/calendar"
           style={{ textDecoration: "none", color: "inherit" }}
         >
@@ -26,7 +21,6 @@ export const NavBar = () => {
       </li>
       <li className="navbar-item">
         <Link
-          className="navbar-link"
           to="/profile"
           style={{ textDecoration: "none", color: "inherit" }}
         >
@@ -36,12 +30,12 @@ export const NavBar = () => {
       {localStorage.getItem("know-how-user") ? (
         <li className="navbar-item navbar-logout">
           <Link
-            className="navbar-link"
             to=""
             onClick={() => {
               localStorage.removeItem("know-how-user");
               navigate("/", { replace: true });
             }}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
             Logout
           </Link>

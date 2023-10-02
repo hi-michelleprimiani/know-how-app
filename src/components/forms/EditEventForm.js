@@ -4,11 +4,11 @@ import { getCategory } from "../../services/APIService";
 import "./EditEventForm.css";
 
 export const EditEventForm = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
   const [eventData, setEventData] = useState({});
   const [categories, setCategories] = useState([]);
   const [isDateFocused, setIsDateFocused] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -124,19 +124,11 @@ export const EditEventForm = () => {
             placeholder="Enter time (e.g. 3:00 PM)"
           />
           <input
-            type={isDateFocused ? "date" : "text"}
+            type="date"
             name="date"
-            placeholder={
-              isDateFocused
-                ? ""
-                : eventData.date
-                ? eventData.date
-                : "Select a Date"
-            }
             value={eventData.date ? eventData.date : ""}
             onChange={handleChange}
-            onFocus={() => setIsDateFocused(true)}
-            onBlur={() => setIsDateFocused(false)}
+            placeholder="MM-DD-YYYY"
           />
 
           <input

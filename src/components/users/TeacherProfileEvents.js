@@ -19,12 +19,13 @@ export const TeacherProfileEvents = ({
       eventsArray.map((event) => {
         const eventDate = new Date(event.date);
         const month = eventDate.getMonth() + 1;
-        const day = eventDate.getDate();
+        const day = eventDate.getDate() + 1;
         const year = eventDate.getFullYear();
         const formattedDate = `${month}/${day}/${year}`;
+
         return (
           <div key={event.id} className="profile-events">
-            <div className="profile-classname">{event.className}</div>
+            <div className="profile-event-name">{event.className}</div>
             <div className="profile-event-details">
               <div>{event.time}</div>
               <div>{formattedDate}</div>

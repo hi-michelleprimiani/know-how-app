@@ -3,7 +3,7 @@ import "./EventDetails-Secondary.css";
 export const EventDetailsSecondary = ({ eventDetail, teacher }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US"); // 'MM/DD/YYYY'
+    return date.toUTCString().slice(0, 16); // Adjust the slice indices based on your preferred format
   };
 
   return (
