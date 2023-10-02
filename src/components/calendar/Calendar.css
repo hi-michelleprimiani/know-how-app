@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,700;1,800;1,900&family=Noto+Serif+Display:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+Display:wght@300&display=swap");
 
 :root {
   --primary-color: #f8f6f2;
@@ -17,7 +18,7 @@
   /* max-height: 2000px; */
   max-width: 2000px;
   background: var(--bg-color);
-  padding: 30px 20px;
+  padding: 10px 20px;
   border-radius: 10px;
 }
 .calendar .header {
@@ -39,9 +40,14 @@
 
 .calendar .header .month {
   color: var(--text-color);
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
   font-size: 80px;
 }
+
+.calendar .header .month:hover {
+  color: var(--primary-color);
+}
+
 .calendar .header .btns {
   display: flex;
   gap: 10px;

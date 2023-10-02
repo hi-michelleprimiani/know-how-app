@@ -86,14 +86,14 @@
   flex-direction: column;
   margin: 20px;
   font-size: 20px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
+  font-family: "Noto Sans Display", sans-serif;
 }
 
 .label {
   margin: 10px;
   font-size: 30px;
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
+
   /* font-family: knewave; */
   /* src: url(); */
 }

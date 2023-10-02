@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&display=swap");
+
 :root {
   --primary-color: #f8f6f2;
   --text-color: #b0daf0;
@@ -38,8 +40,8 @@
 }
 
 .profile-name {
-  font-family: "Gluten-Black", Arial, sans-serif;
-  font-size: 50px;
+  font-family: "Dela Gothic One", cursive;
+  font-size: 40px;
   margin: 30px;
   margin-bottom: 40px;
 }
@@ -49,6 +51,5 @@
   flex-direction: column;
   justify-content: center;
   margin: 30px;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
+  font-family: "Noto Sans Display", sans-serif;
 }

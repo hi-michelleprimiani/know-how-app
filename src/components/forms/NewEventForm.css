@@ -60,13 +60,15 @@ h1 {
 }
 
 .new-name {
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
+
   font-size: 60px;
   margin-bottom: 20px;
 }
 
 .new-category {
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
+
   font-size: 30px;
   margin: 10px;
 }

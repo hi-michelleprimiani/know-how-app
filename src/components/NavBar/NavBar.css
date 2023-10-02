@@ -13,19 +13,28 @@
 .navbar {
   display: flex;
   flex-wrap: nowrap;
+  align-items: center;
   background-color: var(--accent-color);
   width: 100%;
   height: 60px;
+  overflow: hidden;
 }
 
-.navbar-item {
+.navbar li {
   flex-basis: 20%;
   list-style-type: none;
   text-align: center;
-  margin-top: 20px;
   color: var(--bg-color);
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
+  font-family: "Dela Gothic One", cursive;
+  font-weight: lighter;
+}
+.navbar-item:hover {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-link {
@@ -36,7 +45,6 @@
 .navbar-logout {
   margin-left: auto;
 }
-
-.navbar-link:hover {
-  color: var(--text-color);
+.navbar-logout:hover {
+  color: var(--primary-color);
 }

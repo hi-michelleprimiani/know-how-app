@@ -56,12 +56,14 @@
 }
 
 .edit-name {
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
+
   font-size: 60px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .edit-category {
-  font-family: "Gluten-Black", Arial, sans-serif;
+  font-family: "Dela Gothic One", cursive;
+
   font-size: 30px;
   margin: 10px;
 }
