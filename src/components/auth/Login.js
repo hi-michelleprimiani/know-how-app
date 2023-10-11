@@ -31,7 +31,7 @@ export const Login = () => {
 
   return (
     <main className="container-login">
-      <div className="title">Know-How!</div>
+      <div className="title">Know-How</div>
       <div className="tagline">For Outdoor Lovers</div>
       <section>
         <form className="form-login" onSubmit={handleLogin}>
