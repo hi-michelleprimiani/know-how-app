@@ -7,7 +7,7 @@
 
 .container-login {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 120px;
 }
 
 .community {
@@ -27,6 +27,14 @@
     "Helvetica Neue", sans-serif;
   margin: 20px;
   font-size: 20px;
+}
+
+.tagline {
+  font-family: FA_APXKJQVUTG;
+  src: url(/Users/meesha_zima/Library/Fonts/FA_APXKJQVUTG.ttf);
+  font-size: 50px;
+  clip-path: inset(3px 0 0 0);
+  color: var(--text-color);
 }
 
 .form-login {
@@ -86,15 +94,7 @@
   font-family: Sniglet;
   src: url(/Users/meesha_zima/Library/Fonts/Sniglet.ttf);
   font-size: 150px;
-  margin: 30px;
 }
-
-/* .login-guy {
-  font-family: FA_LFQEXGLCLC;
-  src: url(/Users/meesha_zima/Library/Fonts/FA_LFQEXGLCLC.ttf);
-  font-size: 150px;
-  color: var(--primary-color);
-} */
 
 .form-teacher {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
