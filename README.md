@@ -1,5 +1,5 @@
 # Know-How! An Outdoor Lovers Application 
-Please note that Know-How and Know-How for now have been used interchangeably. 
+Please note that names Know-How and Scire have been used interchangeably. 
 
 ## Description 
 
