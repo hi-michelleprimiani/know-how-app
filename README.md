@@ -19,7 +19,9 @@ The teachers are users that are experienced in outdoor activities and possess a 
 ## List of Features 
 
 - User specific views based on validation 
-- CRUD capabilities 
+- CRUD capabilities
+- Calendar UI built with React
+- Over 40 modules adhering to clean code practices and modularization
 
 ## Screenshots of Project 
 
@@ -31,4 +33,7 @@ The teachers are users that are experienced in outdoor activities and possess a 
 <img width="1791" alt="Screenshot 2023-10-11 at 7 44 29 PM" src="https://github.com/hi-michelleprimiani/know-how-app/assets/133997733/a332fc5c-58a3-4635-ac1a-f6357b89eb0c">
 <img width="1775" alt="Screenshot 2023-10-11 at 7 44 44 PM" src="https://github.com/hi-michelleprimiani/know-how-app/assets/133997733/c5069a99-82d2-45fa-85cb-55164c2f2851">
 
+## Loom
+
+https://www.loom.com/share/3851d29547004900ae2288b4d6f0372d?sid=4f765986-195c-4bdc-b4b1-8da11f76cc86
 
