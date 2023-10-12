@@ -8,6 +8,7 @@ Know-How is an organization curating events and classes for outdoors lovers and 
 ## Wireframe & ERD 
 
 https://miro.com/app/board/uXjVMn0oef4=/?share_link_id=873923352855
+
 https://dbdiagram.io/d/64f8fce902bd1c4a5e1b5ca1
 
 ## Description of the user types
