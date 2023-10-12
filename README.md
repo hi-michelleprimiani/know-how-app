@@ -10,7 +10,7 @@ Know-How is an organization curating events and classes for outdoors lovers and 
 https://miro.com/app/board/uXjVMn0oef4=/?share_link_id=873923352855
 https://dbdiagram.io/d/64f8fce902bd1c4a5e1b5ca1
 
-## Description of the user
+## Description of the user types
 
 The student user of this application is an individual who has a genuine passion for the outdoors and nature. They may already have experience with outdoor activities and are interested in deepening their connection with nature, learning new outdoor skills, and participating in community events and workshops.
 
