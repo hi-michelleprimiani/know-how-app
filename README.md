@@ -1,4 +1,5 @@
 # Know-How! An Outdoor Lovers Application 
+
 Please note that the names Know-How and Scire have been used interchangeably. 
 
 ## Description 
