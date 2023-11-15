@@ -33,8 +33,11 @@ export const CalendarComponent = ({ currentUser }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    // checks if user is an array 
     if (Array.isArray(users)) {
+      // fetches array of events with promise handler 
       getEvents().then((eventsArray) => {
+        // reduce method to transform array of events into an object where key dates and values are arrays. acc / accumulator
         const eventsByDate = eventsArray.reduce((acc, event) => {
           const correspondingTeacher = users.find(
             (user) => user.id === event.teacherId
@@ -49,7 +52,7 @@ export const CalendarComponent = ({ currentUser }) => {
             eventDate.getMinutes() + eventDate.getTimezoneOffset()
           );
           const dateStr = eventDate.toDateString();
-
+          // checks if the 'acc' obj has a key for the events date.
           if (!acc[dateStr]) {
             acc[dateStr] = [];
           }
@@ -83,6 +86,7 @@ export const CalendarComponent = ({ currentUser }) => {
     setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1));
   };
 
+  // condition ? expressionIfTrue : expressionIfFalse.
   const handleNextClick = () => {
     setCurrentMonth((prevMonth) => (prevMonth === 11 ? 0 : prevMonth + 1));
   };
