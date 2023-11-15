@@ -39,3 +39,31 @@ The teachers are users that are experienced in outdoor activities and possess a 
 
 https://www.loom.com/share/3851d29547004900ae2288b4d6f0372d?sid=4f765986-195c-4bdc-b4b1-8da11f76cc86
 
+## Running This Application
+
+1. Clone this repository
+```
+git clone git@github.com:hi-michelleprimiani/know-how-app.git
+cd know-how-app
+```
+
+2. Access the data https://github.com/hi-michelleprimiani/know-how-api
+   
+3. Launch the client
+
+```
+npm install
+npm start
+```
+
+## Demo User Credentials 
+
+Teacher 
+email - alice@email.com
+password - alice
+
+Student
+email - jordan@email.com
+password - jordan
+ 
+
